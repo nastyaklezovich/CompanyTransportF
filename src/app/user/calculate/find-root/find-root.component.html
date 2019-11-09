@@ -1,0 +1,35 @@
+<div *ngIf="condition; then thenBlock else elseBlock"></div>
+<ng-template #thenBlock>
+    <div *ngIf="!isOk; else elseBlock" class="container">
+        <h1 class="text-center"></h1>
+        <table class="table table-hover">
+            <thead class="thead-light">
+                <tr>
+                    <th>#</th>
+                    <th>Номер маршрута</th>
+                    <th>Время перевозки</th>
+                    <th>Расстояние</th>
+                    <th>Стоимость</th>
+                    <th>Выбрать</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let map of maps" let i = index>
+                    <td>{{i+1}}</td>
+                    <td>{{ map.id_map}}</td>
+                    <td>{{ map.time }}</td>
+                    <td>{{ map.distance}}</td>
+                    <td>{{ map.cost }}</td>
+                    <td><a (click)="acceptMap(map.id_map)" class="btn"><span
+                                class="fa fa fa-check-circle-o fa-2x"></span></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <ng-template #elseBlock>
+        OK
+    </ng-template>
+</ng-template>
+<ng-template #elseBlock>
+Нет маршрутов, соответствующих вашим требованиям
+</ng-template>
