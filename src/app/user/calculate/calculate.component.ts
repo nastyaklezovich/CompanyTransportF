@@ -38,7 +38,7 @@ export class CalculateComponent implements OnInit {
 
   ngOnInit() {
     this.ps.get_point_name().subscribe((data: Point[]) => {
-      console.log(data);
+      console.warn(data);
       this.points = data;
     });
 
