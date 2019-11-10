@@ -5,6 +5,7 @@ import { UserComponent } from './user/user.component';
 import { CalculateComponent } from './user/calculate/calculate.component';
 import { FindRootComponent } from './user/calculate/find-root/find-root.component';
 import { UserOrderComponent } from './user/user-order/user-order.component';
+import { CoreModule, AuthGuard, RoleType } from "./core";
 
 
 const routes: Routes = [
@@ -15,6 +16,8 @@ const routes: Routes = [
   {
     path:"user",
     component: UserComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [RoleType.User] },
     children: [
       {
         path:"calculate",
