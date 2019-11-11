@@ -27,23 +27,26 @@ export class AuthComponent implements OnInit {
     this.authForm = this.formBuilder.group({
       login: ["", Validators.required],
       password: ["", Validators.required]
+      // login: ["youremail@gmail.com", [Validators.required, Validators.email]],
+      // password: ["password", [Validators.required,Validators.minLength(6)]]
     });
 
     this.returnUrl = this.route.snapshot.queryParams["returnUrl"] || "/";
 
   }
   onSubmit() {
-    console.log("Good");
-    console.log()
 
-    if (this.authForm.invalid) {
-      return;
-    }
+    // if (this.authForm.invalid) {
+    //   return;
+    // }
+    console.log(this.authForm.controls.login.value),
+    console.log(this.authForm.controls.password.value),
+    
 
     this.authService
       .login(
         this.authForm.controls.login.value,
-        this.authForm.controls.password.value
+        this.authForm.controls.password.value,
       )
       .pipe(first())
       .subscribe(

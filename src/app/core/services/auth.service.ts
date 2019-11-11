@@ -26,7 +26,7 @@ export class AuthService extends BaseService {
   }
 
   public login(login: string, password: string) {
-    return this.http.post<User>(`${this.baseUrl}/authorization`, { login, password }).pipe(
+    return this.http.post<User>(`${this.baseUrl}/login`, { login, password }).pipe(
       map(user => {
         if (user) {
           user.authdata = btoa(login + ":" + password);
