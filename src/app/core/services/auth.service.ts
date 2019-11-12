@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
@@ -26,8 +26,10 @@ export class AuthService extends BaseService {
   }
 
   public login(login: string, password: string) {
-    return this.http.post<User>(`${this.baseUrl}/login`, { login, password }).pipe(
+    const header = new HttpHeaders({Authorisation:'Basic'+btoa(login+":"+password)});
+    return this.http.get<User>(`${this.baseUrl}/login`, { headers: header }).pipe(
       map(user => {
+        console.log(user);
         if (user) {
           user.authdata = btoa(login + ":" + password);
           localStorage.setItem("user", JSON.stringify(user));

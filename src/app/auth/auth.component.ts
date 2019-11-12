@@ -25,10 +25,10 @@ export class AuthComponent implements OnInit {
 
   ngOnInit() {
     this.authForm = this.formBuilder.group({
-      login: ["", Validators.required],
-      password: ["", Validators.required]
-      // login: ["youremail@gmail.com", [Validators.required, Validators.email]],
-      // password: ["password", [Validators.required,Validators.minLength(6)]]
+      // login: ["", Validators.required],
+      // password: ["", Validators.required]
+      login: ["youremail@gmail.com", [Validators.required, Validators.email]],
+      password: ["password", [Validators.required,Validators.minLength(6)]]
     });
 
     this.returnUrl = this.route.snapshot.queryParams["returnUrl"] || "/";
