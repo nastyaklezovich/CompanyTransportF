@@ -12,6 +12,7 @@ import { ViewCompaniesComponent } from './admin/view-companies/view-companies.co
 import { EditCompanyComponent } from './admin/view-companies/edit-company/edit-company.component';
 import { AddTransportComponent } from './admin/add-transport/add-transport.component';
 import { ViewTransportsComponent } from './admin/view-transports/view-transports.component';
+import { AddMapComponent } from './admin/add-map/add-map.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,10 @@ const routes: Routes = [
     path: "admin",
     component: AdminComponent,
     children: [
+      {
+        path:"addmap",
+        component: AddMapComponent
+      },
       {
         path: "addtransport",
         component: AddTransportComponent
@@ -50,8 +55,8 @@ const routes: Routes = [
   {
     path: "user",
     component: UserComponent,
-    canActivate: [AuthGuard],
-    data: { roles: [RoleType.User] },
+    // canActivate: [AuthGuard],
+    // data: { roles: [RoleType.User] },
     children: [
       {
         path: "calculate",

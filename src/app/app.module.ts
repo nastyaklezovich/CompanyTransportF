@@ -17,6 +17,8 @@ import { ViewCompaniesComponent } from './admin/view-companies/view-companies.co
 import { EditCompanyComponent } from './admin/view-companies/edit-company/edit-company.component';
 import { AddTransportComponent } from './admin/add-transport/add-transport.component';
 import { ViewTransportsComponent } from './admin/view-transports/view-transports.component';
+import { AddMapComponent } from './admin/add-map/add-map.component';
+import { ViewMapsComponent } from './admin/view-maps/view-maps.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { ViewTransportsComponent } from './admin/view-transports/view-transports
     ViewCompaniesComponent,
     EditCompanyComponent,
     AddTransportComponent,
-    ViewTransportsComponent,   
+    ViewTransportsComponent,
+    AddMapComponent,
+    ViewMapsComponent,   
   ],
   imports: [
     BrowserModule,
