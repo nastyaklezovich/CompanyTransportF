@@ -10,6 +10,7 @@ import {CompanyService} from '../../company.service';
 })
 export class AddCompanyComponent implements OnInit {
 
+
   addCompanyForm: FormGroup;
 
   constructor(private fb: FormBuilder, private acs: CompanyService) {
