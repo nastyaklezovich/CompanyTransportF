@@ -1,0 +1,36 @@
+<p>view-companies works!</p>
+<a [routerLink]="[{ outlets: { 'popup': ['editcompany'] }}]" skipLocationChange>Редактировать</a>
+
+<div class="container">
+    <h1 class="text-center"></h1>
+    <table class="table table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th>#</th>
+                <th>Название компании</th>
+                <th>Номер телефона</th>
+                <th>Email</th>
+                <th>Тип перевозки</th>
+                <th>Описание</th>
+                <th>Изменить</th>
+                <th>Удалить</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let company of companies" let i=index>
+                <td>{{i+1}}</td>
+                <td>{{ company.name_company}}</td>
+                <td>{{ company.phone_number_company}}</td>
+                <td>{{ company.email_company}}</td>
+                <td>{{ company.type_transportation_company}}</td>
+                <td>{{ company.description_company}}</td>
+                <td><a [routerLink]="[{ outlets: { 'popup': ['./editcompany', company.id] }}]" skipLocationChange>Редактировать</a></td>
+                <!-- <td><a [routerLink]="['./editcompany', company.id]" class="btn"><span
+                    class="fa fa-edit fa-2x"></span></a></td> -->
+                <td><a (click)="delete_company(company.id)" class="btn"><span
+                            class="fa fa-trash fa-2x"></span></a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<router-outlet name="popup"></router-outlet>
