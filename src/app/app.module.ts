@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
-import { HttpClientModule, /* other http imports */ } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS, /* other http imports */ } from "@angular/common/http";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,8 +12,11 @@ import { CalculateComponent } from './user/calculate/calculate.component';
 import { FindRootComponent } from './user/calculate/find-root/find-root.component';
 import { UserOrderComponent } from './user/user-order/user-order.component';
 
+import { AuthInterceptor } from './core/middleware';
+
 @NgModule({
   declarations: [
+
     AppComponent,
     HomeComponent,
     AuthComponent,
@@ -29,7 +32,13 @@ import { UserOrderComponent } from './user/user-order/user-order.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi   : true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
