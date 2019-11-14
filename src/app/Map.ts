@@ -1,5 +1,6 @@
 export default class form {
-    name_point: String;
+    start_point: String;
+    end_point: String;
     distance: String;
     cost: String;
     time: String;

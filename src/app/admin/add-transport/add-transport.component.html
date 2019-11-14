@@ -1,0 +1,78 @@
+<p>add-transport works!</p>
+
+<div class="container">
+    <h2 class="text-center">Добавление транспорта</h2>
+
+    <form [formGroup]="addTransportForm" role="form" class="form-group" novalidate>
+
+        <div class="form-group">
+            <label class="control-label" for="name_transport">Название транспорта</label>
+            <input formControlName="name_transport" class="form-control name_transport" type="text" #name_transport>
+        </div>
+        <div *ngIf="addTransportForm.controls['name_transport'].invalid && (addTransportForm.controls['name_transport'].dirty || addTransportForm.controls['name_transport'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="addTransportForm.controls['name_transport'].errors.required">
+                Заполните данное поле!
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="speed">Скорость</label>
+            <input formControlName="speed" class="form-control speed" type="number" #speed>
+        </div>
+        <div *ngIf="addTransportForm.controls['speed'].invalid && (addTransportForm.controls['speed'].dirty || addTransportForm.controls['speed'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="addTransportForm.controls['speed'].errors.required">
+                Заполните данное поле!
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="id_company">Компания</label>
+            <select class="form-control" name="id_company" id="id_company" [(ngModel)]="id_company"
+                [ngModelOptions]="{standalone: true}">
+                <option *ngFor="let company of companies" [value]="company.name_company">
+                    {{company.name_company}}
+                </option>
+            </select>
+        </div>
+        <div *ngIf="addTransportForm.controls['id_company'].invalid && (addTransportForm.controls['id_company'].dirty || addTransportForm.controls['id_company'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="addTransportForm.controls['id_company'].errors.required">
+                Заполните данное поле!
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="max_weight">Max вместимость (вес)</label>
+            <input formControlName="max_weight" class="form-control max_weight" type="text" #max_weight>
+        </div>
+        <div *ngIf="addTransportForm.controls['max_weight'].invalid && (addTransportForm.controls['max_weight'].dirty || addTransportForm.controls['max_weight'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="addTransportForm.controls['max_weight'].errors.required">
+                Заполните данное поле!
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="tariff_plan">Тариф</label>
+            <input formControlName="tariff_plan" class="form-control tariff_plan" type="number" #tariff_plan>
+        </div>
+        <div *ngIf="addTransportForm.controls['tariff_plan'].invalid && (addTransportForm.controls['tariff_plan'].dirty || addTransportForm.controls['tariff_plan'].touched)"
+            class="alert alert-danger">
+            <div *ngIf="addTransportForm.controls['tariff_plan'].errors.required">
+                Заполните данное поле!
+            </div>
+        </div>
+
+        <div class="form-group justify-content-center align-items-center text-center">
+            <button
+                (click)="add_transport(name_transport.value, speed.value, id_company, max_weight.value, tariff_plan.value)"
+                class="btn btn-primary">
+                Добавить
+            </button>
+        </div>
+
+    </form>
+
+</div>

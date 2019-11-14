@@ -11,6 +11,14 @@ import { UserComponent } from './user/user.component';
 import { CalculateComponent } from './user/calculate/calculate.component';
 import { FindRootComponent } from './user/calculate/find-root/find-root.component';
 import { UserOrderComponent } from './user/user-order/user-order.component';
+import { AdminComponent } from './admin/admin.component';
+import { AddCompanyComponent } from './admin/add-company/add-company.component';
+import { ViewCompaniesComponent } from './admin/view-companies/view-companies.component';
+import { EditCompanyComponent } from './admin/view-companies/edit-company/edit-company.component';
+import { AddTransportComponent } from './admin/add-transport/add-transport.component';
+import { ViewTransportsComponent } from './admin/view-transports/view-transports.component';
+import { AddMapComponent } from './admin/add-map/add-map.component';
+import { ViewMapsComponent } from './admin/view-maps/view-maps.component';
 
 import { AuthInterceptor } from './core/middleware';
 
@@ -23,7 +31,15 @@ import { AuthInterceptor } from './core/middleware';
     UserComponent,
     CalculateComponent,
     FindRootComponent,
-    UserOrderComponent,   
+    UserOrderComponent,
+    AdminComponent,
+    AddCompanyComponent,
+    ViewCompaniesComponent,
+    EditCompanyComponent,
+    AddTransportComponent,
+    ViewTransportsComponent,
+    AddMapComponent,
+    ViewMapsComponent,   
   ],
   imports: [
     BrowserModule,
