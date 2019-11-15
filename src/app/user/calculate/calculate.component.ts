@@ -12,7 +12,9 @@ import {Router} from "@angular/router";
 })
 export class CalculateComponent implements OnInit {
 
-  points: Point[];
+  // points: Point[];
+
+  points: Point[]=[{name_point: "ффф",id:"1"},{name_point: "ббб",id:"2"}];
 
   calculateForm: FormGroup;
 
@@ -26,21 +28,23 @@ export class CalculateComponent implements OnInit {
       end_point:['', Validators.required],
       weight_product: ['', Validators.required],
       volume_product: ['', Validators.required],
-      type_product: ['', Validators.required],
+      // type_product: ['', Validators.required],
     })
   }
 
-  find_route(start_point, end_point, weight_product, volume_product, type_product){
-    this.cs.find_route(start_point, end_point, weight_product, volume_product, type_product);
+  find_route(start_point, end_point, weight_product, volume_product){
+    this.cs.find_route(start_point, end_point, weight_product, volume_product);
+    
     this.router.navigate(['/user/calculate/findroot']);
     //window.alert('Your product has been added to the cart!');
   }
 
   ngOnInit() {
-    this.ps.get_point_name().subscribe((data: Point[]) => {
-      console.warn(data);
-      this.points = data;
-    });
+    // this.ps.get_point_name().subscribe((data: Point[]) => {
+    //   // console.warn(data);
+    //   console.log(data);
+    //   this.points = data;
+    // });
 
   }
 
