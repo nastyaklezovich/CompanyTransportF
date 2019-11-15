@@ -1,4 +1,4 @@
 export default class form {
-    name_point: String;;
+    name_point: String;
     id: String;
 }

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
-import { HttpClientModule, /* other http imports */ } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS, /* other http imports */ } from "@angular/common/http";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,8 +20,11 @@ import { ViewTransportsComponent } from './admin/view-transports/view-transports
 import { AddMapComponent } from './admin/add-map/add-map.component';
 import { ViewMapsComponent } from './admin/view-maps/view-maps.component';
 
+import { AuthInterceptor } from './core/middleware';
+
 @NgModule({
   declarations: [
+
     AppComponent,
     HomeComponent,
     AuthComponent,
@@ -45,7 +48,13 @@ import { ViewMapsComponent } from './admin/view-maps/view-maps.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi   : true,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
