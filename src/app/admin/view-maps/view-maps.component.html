@@ -17,11 +17,10 @@
                 <td>{{i+1}}</td>
                 <td>{{ map.start_point}}</td>
                 <td>{{ map.end_point}}</td>
-                <td><a [routerLink]="['./editcompany', company.id]" class="btn"><span
+                <td><a [routerLink]="['./editmap', map.id]" class="btn"><span
                             class="fa fa-edit fa-2x"></span></a></td>
-                <td><a (click)="delete_company(company.id)" class="btn"><span class="fa fa-trash fa-2x"></span></a></td>
+                <td><a (click)="delete_map(map.id)" class="btn"><span class="fa fa-trash fa-2x"></span></a></td>
             </tr>
         </tbody>
     </table>
 </div>
-<router-outlet name="popup"></router-outlet>

@@ -42,7 +42,7 @@ export class CompanyService {
     return this.http.get(`${this.uri}/company/${id}`);
   }
 
-  updateDepartment(name_company, phone_number_company, email_company, type_transportation_company, description_company, id) {
+  update_company(name_company, phone_number_company, email_company, type_transportation_company, description_company, id) {
 
     const obj =  {
       name_company: name_company,

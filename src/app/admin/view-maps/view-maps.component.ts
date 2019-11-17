@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import Map from '../../Map';
+import {MapService} from '../../map.service'
+
 
 @Component({
   selector: 'app-view-maps',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewMapsComponent implements OnInit {
 
-  constructor() { }
+  maps: Map[];
+
+  constructor(private ms: MapService) { }
 
   ngOnInit() {
+    this.ms.get_maps().subscribe((data: Map[])=>{
+      console.log(data);
+      this.maps=data;
+    });
   }
 
 }

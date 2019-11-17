@@ -29,6 +29,6 @@ export class AddMapComponent implements OnInit {
   }
 
   add_map(start_point, end_point) {
-    this.ms.addMap(start_point, end_point)
+    this.ms.add_map(start_point, end_point)
   }
 }

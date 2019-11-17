@@ -21,6 +21,7 @@ import { AddMapComponent } from './admin/add-map/add-map.component';
 import { ViewMapsComponent } from './admin/view-maps/view-maps.component';
 
 import { AuthInterceptor } from './core/middleware';
+import { AddIntermediatePointComponent } from './admin/view-maps/add-intermediate-point/add-intermediate-point.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AuthInterceptor } from './core/middleware';
     AddTransportComponent,
     ViewTransportsComponent,
     AddMapComponent,
-    ViewMapsComponent,   
+    ViewMapsComponent,
+    AddIntermediatePointComponent,   
   ],
   imports: [
     BrowserModule,
