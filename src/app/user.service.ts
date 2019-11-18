@@ -22,4 +22,16 @@ export class UserService {
 
     }
 
+    get_users(){
+        return this
+        .http
+        .get(`${this.uri}/users`);
+    }
+
+    delete_user(id) {
+        return this
+            .http
+            .delete(`${this.uri}/user/${id}`);
+    }
+
 }

@@ -16,6 +16,7 @@ import { AddMapComponent } from './admin/add-map/add-map.component';
 import { ViewMapsComponent } from './admin/view-maps/view-maps.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { AddUserComponent } from './admin/add-user/add-user.component';
+import { ViewUsersComponent } from './admin/view-users/view-users.component';
 
 const routes: Routes = [
   {
@@ -64,6 +65,10 @@ const routes: Routes = [
       {
         path: "adduser",
         component: AddUserComponent,
+      },
+      {
+        path: "viewusers",
+        component: ViewUsersComponent
       }
 
     ]
