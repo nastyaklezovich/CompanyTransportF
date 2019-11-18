@@ -14,8 +14,13 @@ import { AddTransportComponent } from './admin/add-transport/add-transport.compo
 import { ViewTransportsComponent } from './admin/view-transports/view-transports.component';
 import { AddMapComponent } from './admin/add-map/add-map.component';
 import { ViewMapsComponent } from './admin/view-maps/view-maps.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 const routes: Routes = [
+  {
+    path: "registration",
+    component: RegistrationComponent
+  },
   {
     path: "auth",
     component: AuthComponent,
