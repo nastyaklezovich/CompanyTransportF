@@ -13,7 +13,7 @@ import { EditCompanyComponent } from './admin/view-companies/edit-company/edit-c
 import { AddTransportComponent } from './admin/add-transport/add-transport.component';
 import { ViewTransportsComponent } from './admin/view-transports/view-transports.component';
 import { AddMapComponent } from './admin/add-map/add-map.component';
-
+import { ViewMapsComponent } from './admin/view-maps/view-maps.component';
 
 const routes: Routes = [
   {
@@ -27,6 +27,11 @@ const routes: Routes = [
       {
         path:"addmap",
         component: AddMapComponent
+      },
+      {
+        path:"viewmaps",
+        component: ViewMapsComponent,
+
       },
       {
         path: "addtransport",

@@ -21,11 +21,11 @@ import { AddMapComponent } from './admin/add-map/add-map.component';
 import { ViewMapsComponent } from './admin/view-maps/view-maps.component';
 
 import { AuthInterceptor } from './core/middleware';
-import { AddIntermediatePointComponent } from './admin/view-maps/add-intermediate-point/add-intermediate-point.component';
+import { RegistrationComponent } from './registration/registration.component';
+
 
 @NgModule({
   declarations: [
-
     AppComponent,
     HomeComponent,
     AuthComponent,
@@ -41,7 +41,7 @@ import { AddIntermediatePointComponent } from './admin/view-maps/add-intermediat
     ViewTransportsComponent,
     AddMapComponent,
     ViewMapsComponent,
-    AddIntermediatePointComponent,   
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,

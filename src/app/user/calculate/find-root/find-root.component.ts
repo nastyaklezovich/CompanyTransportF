@@ -17,7 +17,7 @@ export class FindRootComponent implements OnInit {
   constructor(private ms: MapService) { }
 
   ngOnInit() {
-    this.ms.getMaps().subscribe((data: Map[]) => {
+    this.ms.get_maps().subscribe((data: Map[]) => {
       console.log(data);
       this.map = data;
       this.condition=true;
@@ -29,7 +29,7 @@ export class FindRootComponent implements OnInit {
   }
  
   acceptMap(id) {
-    this.ms.acceptMap(id).subscribe(res => {
+    this.ms.accept_map(id).subscribe(res => {
       this.isOk=true;
       console.log(id);
       console.log('accept');},
