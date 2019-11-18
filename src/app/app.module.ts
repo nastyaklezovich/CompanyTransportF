@@ -22,6 +22,8 @@ import { ViewMapsComponent } from './admin/view-maps/view-maps.component';
 
 import { AuthInterceptor } from './core/middleware';
 import { RegistrationComponent } from './registration/registration.component';
+import { AddUserComponent } from './admin/add-user/add-user.component';
+import { ViewUsersComponent } from './admin/view-users/view-users.component';
 
 
 @NgModule({
@@ -42,6 +44,8 @@ import { RegistrationComponent } from './registration/registration.component';
     AddMapComponent,
     ViewMapsComponent,
     RegistrationComponent,
+    AddUserComponent,
+    ViewUsersComponent,
   ],
   imports: [
     BrowserModule,

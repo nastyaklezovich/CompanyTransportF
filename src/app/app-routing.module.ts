@@ -15,6 +15,7 @@ import { ViewTransportsComponent } from './admin/view-transports/view-transports
 import { AddMapComponent } from './admin/add-map/add-map.component';
 import { ViewMapsComponent } from './admin/view-maps/view-maps.component';
 import { RegistrationComponent } from './registration/registration.component';
+import { AddUserComponent } from './admin/add-user/add-user.component';
 
 const routes: Routes = [
   {
@@ -59,7 +60,12 @@ const routes: Routes = [
             component: EditCompanyComponent,
           }
         ]
+      },
+      {
+        path: "adduser",
+        component: AddUserComponent,
       }
+
     ]
   },
   {

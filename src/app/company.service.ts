@@ -9,14 +9,7 @@ export class CompanyService {
 
   constructor(private http: HttpClient) { }
 
-  add_company(name_company, phone_number_company, email_company, type_transportation_company, description_company) {
-    const obj = {
-      name_company: name_company,
-      phone_number_company: phone_number_company,
-      email_company: email_company,
-      type_transportation_company: type_transportation_company,
-      description_company: description_company,
-    };
+  add_company(obj) {
 
     console.log(obj);
 

@@ -1,46 +1,46 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service'
+import { RoleType } from 'src/app/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-
+import { UserService } from 'src/app/user.service';
 
 @Component({
-  selector: 'app-registration',
-  templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.css']
+  selector: 'app-add-user',
+  templateUrl: './add-user.component.html',
+  styleUrls: ['./add-user.component.css']
 })
-export class RegistrationComponent implements OnInit {
+export class AddUserComponent implements OnInit {
 
-  registrationForm: FormGroup;
+  roles = [{ name: "USER" }, { name: "ADMIN" }];
 
-  constructor(private us: UserService, private fb: FormBuilder) { }
+  addUserForm: FormGroup;
+
+  constructor(private fb: FormBuilder, private us: UserService) { }
 
   ngOnInit() {
-    this.registrationForm = this.fb.group({
+    this.addUserForm = this.fb.group({
       first_name: ["", Validators.required],
       last_name: ["", Validators.required],
       email: ["", Validators.required],
-
       password: ['', [Validators.required]],
-
       role: ["", Validators.required],
       phone_number: ["", Validators.required],
     })
   }
 
-  registration(first_name, last_name, email, password, phone_number) {
+  registration(first_name, last_name, email, password, role, phone_number) {
 
     const user = {
       first_name: first_name,
       last_name: last_name,
       email: email,
       password: password,
-      role: 'USER',
+      role: role,
       phone_number: phone_number,
     }
 
     this.us.registration(user);
 
   }
-
 }
+
+
