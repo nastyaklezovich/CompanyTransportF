@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
+import { BaseService } from 'src/app/core/services/base.service'
 
 
 @Injectable({
@@ -7,6 +8,7 @@ import { HttpClient } from '@angular/common/http'
 })
 
 export class UserService {
+
 
     uri = "https://localhost:80";
 
@@ -22,10 +24,10 @@ export class UserService {
 
     }
 
-    get_users(){
+    get_users() {
         return this
-        .http
-        .get(`${this.uri}/users`);
+            .http
+            .get(`${this.uri}/users`);
     }
 
     delete_user(id) {
