@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS, /* other http imports */ } from "@angular/common/http";
+import { Routes, RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +25,8 @@ import { AuthInterceptor } from './core/middleware';
 import { RegistrationComponent } from './registration/registration.component';
 import { AddUserComponent } from './admin/add-user/add-user.component';
 import { ViewUsersComponent } from './admin/view-users/view-users.component';
+import { ItemComponent } from './item/item.component';
+import { AddPointsComponent } from './admin/view-maps/add-points/add-points.component';
 
 
 @NgModule({
@@ -46,13 +49,17 @@ import { ViewUsersComponent } from './admin/view-users/view-users.component';
     RegistrationComponent,
     AddUserComponent,
     ViewUsersComponent,
+    ItemComponent,
+    AddPointsComponent,
   ],
+entryComponents:[ItemComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule, 
   ],
   providers: [
     {

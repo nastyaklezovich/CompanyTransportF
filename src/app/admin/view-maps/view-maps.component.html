@@ -8,6 +8,7 @@
                 <th>#</th>
                 <th>Начало</th>
                 <th>Конец</th>
+                <th>Добавить помежуточные точки</th>
                 <!-- <th>Изменить</th>
                 <th>Удалить</th> -->
             </tr>
@@ -17,10 +18,13 @@
                 <td>{{i+1}}</td>
                 <td>{{ map.start_point}}</td>
                 <td>{{ map.end_point}}</td>
+                <td><a [routerLink]="['./addpoints', map.id]" class="btn"></a></td>
                 <!-- <td><a [routerLink]="['./editmap', map.id]" class="btn"><span
                             class="fa fa-edit fa-2x"></span></a></td> -->
                 <!-- <td><a (click)="delete_map(map.id)" class="btn"><span class="fa fa-trash fa-2x"></span></a></td> -->
             </tr>
         </tbody>
     </table>
+    <hr>
+    <router-outlet></router-outlet>
 </div>

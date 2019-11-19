@@ -17,6 +17,7 @@ import { ViewMapsComponent } from './admin/view-maps/view-maps.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { AddUserComponent } from './admin/add-user/add-user.component';
 import { ViewUsersComponent } from './admin/view-users/view-users.component';
+import { AddPointsComponent } from './admin/view-maps/add-points/add-points.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,12 @@ const routes: Routes = [
       {
         path:"viewmaps",
         component: ViewMapsComponent,
+        children:[
+          {
+            path:"addpoints/:id",
+            component: AddPointsComponent,
+          }
+        ]
 
       },
       {

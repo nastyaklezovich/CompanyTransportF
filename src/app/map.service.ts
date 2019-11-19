@@ -11,9 +11,9 @@ export class MapService {
 
   constructor(private http: HttpClient) { }
 
-  add_map(start_point, end_point){
+  add_map(start_point, end_point) {
     const obj = {
-      start_point:start_point,
+      start_point: start_point,
       end_point: end_point,
     };
 
@@ -21,7 +21,7 @@ export class MapService {
 
     this.http.post(`${this.uri}/map`, obj)
       .subscribe(res => { console.log('Done'); alert('Маршрут был добавлен!') },
-      error=>{alert('Ошибка добавления маршрута!')});
+        error => { alert('Ошибка добавления маршрута!') });
   }
 
   get_maps() {
@@ -34,4 +34,9 @@ export class MapService {
     this.http.post(`${this.uri}/map`, id);
     console.log(id);
   }
+
+  edit_map(id) {
+    return this.http.get(`${this.uri}/map/${id}`)
+  }
+
 }
