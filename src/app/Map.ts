@@ -4,5 +4,6 @@ export default class form {
     distance: String;
     cost: String;
     time: String;
+    points: Array<string>=[]
     id: String;
 }

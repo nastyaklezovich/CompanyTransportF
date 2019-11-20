@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS, /* other http imports */ } from "@angular/common/http";
 import { Routes, RouterModule } from '@angular/router';
+import {MatInputModule,MatOptionModule, MatSelectModule, MatIconModule} from '@angular/material'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -60,6 +61,7 @@ entryComponents:[ItemComponent],
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule, 
+    MatInputModule,MatOptionModule, MatSelectModule, MatIconModule,
   ],
   providers: [
     {
