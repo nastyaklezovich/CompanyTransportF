@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS, /* other http imports */ } from "@angular/common/http";
 import { Routes, RouterModule } from '@angular/router';
-import {MatInputModule,MatOptionModule, MatSelectModule, MatIconModule} from '@angular/material'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,9 +27,9 @@ import { AddUserComponent } from './admin/add-user/add-user.component';
 import { ViewUsersComponent } from './admin/view-users/view-users.component';
 import { ItemComponent } from './item/item.component';
 import { AddPointsComponent } from './admin/view-maps/add-points/add-points.component';
-import { BrowserAnimationsModule, ɵBrowserAnimationBuilder } from '@angular/platform-browser/animations'; 
-import {MatNativeDateModule} from '@angular/material/core';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import { BrowserAnimationsModule, ɵBrowserAnimationBuilder } from '@angular/platform-browser/animations';
+import { ParentComponent } from './admin/parent/parent.component';
+import { ChildComponent } from './admin/child/child.component';
 
 
 @NgModule({
@@ -55,29 +54,27 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
     ViewUsersComponent,
     ItemComponent,
     AddPointsComponent,
+    ParentComponent,
+    ChildComponent,
   ],
-entryComponents:[ItemComponent],
+  entryComponents: [ChildComponent],
   imports: [
+    ReactiveFormsModule.withConfig({ warnOnNgModelWithFormControl: 'never' }),
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule, 
-    MatInputModule,MatOptionModule, MatSelectModule, MatIconModule,
+    RouterModule,
     BrowserAnimationsModule,
-    MatNativeDateModule,
   ],
   providers: [
     {
-      provide : HTTP_INTERCEPTORS,
+      provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi   : true,
+      multi: true,
     }
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));

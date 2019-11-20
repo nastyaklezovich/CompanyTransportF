@@ -8,15 +8,5 @@ import { ItemComponent } from './item/item.component';
 })
 export class AppComponent {
   title = 'my-app';
-
-  constructor(private vcr: ViewContainerRef, private cfr: ComponentFactoryResolver) { }
-
-  ngOnInit() {
-  }
-
-  addComponent(){
-    const componentFactory = this.cfr.resolveComponentFactory(ItemComponent);
-    const componentRef = this.vcr.createComponent(componentFactory);
-  }
 }
 

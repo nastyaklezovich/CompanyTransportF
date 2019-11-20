@@ -70,17 +70,16 @@ export class AddMapComponent implements OnInit {
     }));
   }
 
+
   submit(form: NgForm) {
     console.log(form.value);
   }
-
-
 
   ngOnInit() {
     // this.ps.get_point_name().subscribe((data: Point[]) => {
     //   // console.warn(data);
     //   console.log(data);
-    //   this.points = data;
+      // this.points = data;
     // });
     // this.ts.get_transports().subscribe((data: Transport[]) => {
     //   console.log(data);

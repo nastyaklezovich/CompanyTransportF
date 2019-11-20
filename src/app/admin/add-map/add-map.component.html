@@ -1,52 +1,44 @@
 <hr>
 
+
 <h2 class="text-center">Добавление маршрута</h2>
 
 <div class="container">
 
-    <form [formGroup]="form">
 
+    <form [formGroup]="form">
         <div>
 
             <button (click)="add_rout()">Добавить точку</button>
 
             <div formArrayName="routs" *ngFor="let creds of form.controls.routs?.value; let i = index">
+               
                 <ng-container [formGroupName]="i">
-                    <!-- <label for="start_point">Начальная точка</label> -->
-                    <!-- <input formControlName="start_point"> -->
-
 
                     <div class="form-group">
                         <label class="control-label" for="start_point">Начальная точка</label>
-                        <select class="form-control" name="start_point" [(ngModel)]="start_point"
-                            [ngModelOptions]="{standalone: true}">
+                        <!-- class="form-control" name="start_point" -->
+                        <select formControlName="start_point" [(ngModel)]="start_point">
                             <option *ngFor="let point of points" [value]="point.id">
                                 {{point.name_point}}
                             </option>
                         </select>
                     </div>
-
 
                     <div class="form-group">
                         <label class="control-label" for="end_point">Конечная точка</label>
-                        <select class="form-control" name="end_point" [(ngModel)]="end_point"
-                            [ngModelOptions]="{standalone: true}">
+                        <!-- class="form-control" name="start_point" -->
+                        <select formControlName="end_point" [(ngModel)]="end_point">
                             <option *ngFor="let point of points" [value]="point.id">
                                 {{point.name_point}}
                             </option>
                         </select>
                     </div>
-                    <!-- 
-                    <label for="end_point">Конечная точка</label>
-                    <input formControlName="end_point"> -->
-
-                    <label for="distance">Расстояние</label>
-                    <input type="text" formControlName="distance">
 
                     <div class="form-group">
                         <label class="control-label" for="transport">Транспорт</label>
-                        <select class="form-control" name="transport" [(ngModel)]="transport"
-                            [ngModelOptions]="{standalone: true}">
+                        <!-- class="form-control" name="start_point" -->
+                        <select formControlName="transport" [(ngModel)]="transport">
                             <option *ngFor="let transport of transports" [value]="transport.id">
                                 {{transport.name_transport}}
                             </option>
@@ -54,30 +46,45 @@
                     </div>
 
 
+                    <!-- <div class="form-group">
+                        <label class="control-label" for="end_point">Конечная точка</label>
+                        <select formControlName="end_point" [(ngModel)]="end_point"> >
+
+                            <option *ngFor="let point of points" [value]="point.id">
+                                {{point.name_point}}
+                            </option>
+                        </select>
+                    </div> -->
+
+                    <!-- <div class="form-group">
+                        <label class="control-label" for="transport">Транспорт</label>
+                        <select formControlName="transport"
+                            [(ngModel)]="transport" >
+                            <option *ngFor="let transport of transports" [value]="transport.id">
+                                {{transport.name_transport}}
+                            </option>
+                        </select>
+                    </div> -->
+
+                    <!-- <label for="start_point">Начальная точка</label>
+                    <input formControlName="start_point">
+
+                    <label for="end_point">Конечная точка</label>
+                    <input formControlName="end_point"> -->
+
+                    <label for="distance">Расстояние</label>
+                    <input type="text" formControlName="distance">
+
+
+
+
                     <!-- <input type="text" formControlName="transport"> -->
                 </ng-container>
             </div>
 
         </div>
-
+        <button (click)="submit(form)">Добавить маршрут</button>
 
     </form>
-    <!-- 
-    <form [formGroup]="form">
-        <div class="row">
-            <div class="col-md-6">
-                <mat-form-field>
-                    <mat-label>Point</mat-label>
-                    <mat-select formControlName="start_point" [(ngModel)]="selectedValue" name="Point">
-                        <mat-option *ngFor="let point of points" [value]="point.id">
-                            {{point.name_point}}
-                        </mat-option>
-                    </mat-select>
-                </mat-form-field>
-                <p> Selected food: {{selectedValue}} </p>
-            </div>
-        </div>
-        <button mat-raised-button (click)="submit(form)">Добавить маршрут</button>
-    </form> -->
 
 </div>

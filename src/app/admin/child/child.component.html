@@ -1,0 +1,48 @@
+<p>child works!</p>
+
+<div class="container">
+
+
+    <form [formGroup]="form">
+
+        <div class="form-group">
+            <label class="control-label" for="start_point">Начальная точка</label>
+            <select formControlName="start_point" [(ngModel)]="start_point">
+                <option *ngFor="let point of points" [value]="point.id">
+                    {{point.name_point}}
+                </option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="end_point">Конечная точка</label>
+            <select formControlName="end_point" [(ngModel)]="end_point">
+                <option *ngFor="let point of points" [value]="point.id">
+                    {{point.name_point}}
+                </option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="transport">Транспорт</label>
+            <select formControlName="transport" [(ngModel)]="transport">
+                <option *ngFor="let transport of transports" [value]="transport.id">
+                    {{transport.name_transport}}
+                </option>
+            </select>
+        </div>
+
+        <label for="distance">Расстояние</label>
+        <input type="text" formControlName="distance">
+        <p>
+            <label for="cost">Цена</label>
+        </p>
+        <input type="text" formControlName="cost">
+        <p>
+            <label for="time">Время</label>
+        </p>
+        <input type="text" formControlName="time">
+
+    </form>
+    <button (click)="submit(form)">Добавить</button>
+</div>

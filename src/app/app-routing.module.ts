@@ -18,6 +18,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { AddUserComponent } from './admin/add-user/add-user.component';
 import { ViewUsersComponent } from './admin/view-users/view-users.component';
 import { AddPointsComponent } from './admin/view-maps/add-points/add-points.component';
+import { ParentComponent } from './admin/parent/parent.component';
 
 const routes: Routes = [
   {
@@ -33,15 +34,19 @@ const routes: Routes = [
     component: AdminComponent,
     children: [
       {
-        path:"addmap",
+        path: "parent",
+        component: ParentComponent
+      },
+      {
+        path: "addmap",
         component: AddMapComponent
       },
       {
-        path:"viewmaps",
+        path: "viewmaps",
         component: ViewMapsComponent,
-        children:[
+        children: [
           {
-            path:"addpoints/:id",
+            path: "addpoints/:id",
             component: AddPointsComponent,
           }
         ]
