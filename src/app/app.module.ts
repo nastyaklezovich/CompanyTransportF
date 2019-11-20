@@ -28,6 +28,9 @@ import { AddUserComponent } from './admin/add-user/add-user.component';
 import { ViewUsersComponent } from './admin/view-users/view-users.component';
 import { ItemComponent } from './item/item.component';
 import { AddPointsComponent } from './admin/view-maps/add-points/add-points.component';
+import { BrowserAnimationsModule, ɵBrowserAnimationBuilder } from '@angular/platform-browser/animations'; 
+import {MatNativeDateModule} from '@angular/material/core';
+import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 
 
 @NgModule({
@@ -62,6 +65,8 @@ entryComponents:[ItemComponent],
     HttpClientModule,
     RouterModule, 
     MatInputModule,MatOptionModule, MatSelectModule, MatIconModule,
+    BrowserAnimationsModule,
+    MatNativeDateModule,
   ],
   providers: [
     {
@@ -73,3 +78,6 @@ entryComponents:[ItemComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.error(err));

@@ -1,7 +1,8 @@
-<p>add-map works!</p>
+<hr>
+
+<h2 class="text-center">Добавление маршрута</h2>
 
 <div class="container">
-    <h2 class="text-center">Добавление маршрута</h2>
 
     <form [formGroup]="form">
 
@@ -11,31 +12,72 @@
 
             <div formArrayName="routs" *ngFor="let creds of form.controls.routs?.value; let i = index">
                 <ng-container [formGroupName]="i">
-                    <label for="start_point">Начальная точка</label>
-                    <input formControlName="start_point">
-                    <!-- <mat-select>
-                        <ngx-mat-select-search></ngx-mat-select-search>
-                        <mat-option *ngFor="let point of points | async" [value]="point">
-                            {{point.name_point}}
-                        </mat-option>
-                    </mat-select> -->
-                    <!-- <mat-select [formControl]="form">
-                        <ngx-mat-select-search [formControl]="bankFilterCtrl"></ngx-mat-select-search>
-                        <mat-option *ngFor="let bank of filteredBanks | async" [value]="bank">
-                          {{bank.name}}
-                        </mat-option>
-                    </mat-select> -->
+                    <!-- <label for="start_point">Начальная точка</label> -->
+                    <!-- <input formControlName="start_point"> -->
+
+
+                    <div class="form-group">
+                        <label class="control-label" for="start_point">Начальная точка</label>
+                        <select class="form-control" name="start_point" [(ngModel)]="start_point"
+                            [ngModelOptions]="{standalone: true}">
+                            <option *ngFor="let point of points" [value]="point.id">
+                                {{point.name_point}}
+                            </option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label class="control-label" for="end_point">Конечная точка</label>
+                        <select class="form-control" name="end_point" [(ngModel)]="end_point"
+                            [ngModelOptions]="{standalone: true}">
+                            <option *ngFor="let point of points" [value]="point.id">
+                                {{point.name_point}}
+                            </option>
+                        </select>
+                    </div>
+                    <!-- 
                     <label for="end_point">Конечная точка</label>
-                    <input formControlName="end_point">
+                    <input formControlName="end_point"> -->
+
                     <label for="distance">Расстояние</label>
                     <input type="text" formControlName="distance">
 
-                    <input type="text" formControlName="transport">
+                    <div class="form-group">
+                        <label class="control-label" for="transport">Транспорт</label>
+                        <select class="form-control" name="transport" [(ngModel)]="transport"
+                            [ngModelOptions]="{standalone: true}">
+                            <option *ngFor="let transport of transports" [value]="transport.id">
+                                {{transport.name_transport}}
+                            </option>
+                        </select>
+                    </div>
+
+
+                    <!-- <input type="text" formControlName="transport"> -->
                 </ng-container>
             </div>
 
         </div>
 
-        <button (click)="submit(form)">Добавить маршрут</button>
+
     </form>
+    <!-- 
+    <form [formGroup]="form">
+        <div class="row">
+            <div class="col-md-6">
+                <mat-form-field>
+                    <mat-label>Point</mat-label>
+                    <mat-select formControlName="start_point" [(ngModel)]="selectedValue" name="Point">
+                        <mat-option *ngFor="let point of points" [value]="point.id">
+                            {{point.name_point}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <p> Selected food: {{selectedValue}} </p>
+            </div>
+        </div>
+        <button mat-raised-button (click)="submit(form)">Добавить маршрут</button>
+    </form> -->
+
 </div>
