@@ -29,6 +29,8 @@ import { BrowserAnimationsModule, ɵBrowserAnimationBuilder } from '@angular/pla
 import { ParentComponent } from './admin/parent/parent.component';
 import { ChildComponent } from './admin/child/child.component';
 import { HeaderComponent } from './header/header.component';
+import {AuthGuard} from "./core/auth";
+import {AuthService} from "./core/services";
 
 
 @NgModule({
@@ -67,6 +69,7 @@ import { HeaderComponent } from './header/header.component';
     BrowserAnimationsModule,
   ],
   providers: [
+
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
