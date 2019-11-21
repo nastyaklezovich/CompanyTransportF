@@ -6,4 +6,10 @@
         </button>
     </div>
 </div> -->
-<app-child (messageEvent)="receiveMessage($event)" ></app-child>
+<!-- <app-child (messageEvent)="receiveMessage($event)" ></app-child> -->
+<button type="button" (click)="createComponent()">
+    I am Parent, Create Child
+</button>
+<div>
+	<ng-template #viewContainerRef></ng-template>
+</div>

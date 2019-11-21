@@ -1,26 +1,34 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import Point from '../../Point'
 import Transport from '../../Transport';
 import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { PointService } from 'src/app/point.service';
 import { TransportService } from 'src/app/transport.service';
 import { EventEmitter } from '@angular/core';
+import Map from '../../Map'
+
+export interface myinterface {
+  remove(index: number);
+  save(index: number, map: Map);
+}
 
 @Component({
   selector: 'app-child',
   templateUrl: './child.component.html',
   styleUrls: ['./child.component.css']
 })
-export class ChildComponent implements OnInit {
+export class ChildComponent {
 
-  // points: Point[];
-  // transports: Transport[];
-
-  @Output() messageEvent = new EventEmitter<any>();
+  public index: number;
+  public selfRef: ChildComponent;
 
   form: FormGroup;
 
-  obj = {};
+  map: Map;
+
+
+  //interface for Parent-Child interaction
+  public compInteraction: myinterface;
 
   points: Point[] = [
     { name_point: 'Москва', id: '1' },
@@ -61,14 +69,18 @@ export class ChildComponent implements OnInit {
     );
   }
 
-  ngOnInit() {
+
+  removeMe(index) {
+    this.compInteraction.remove(index)
   }
 
-  submit(form: NgForm) {
+  save() {
     console.log('CHILD');
-    console.log(form.value);
-    this.obj = form.value;
-    this.messageEvent.emit(this.obj)
+    console.log(this.form.value);
+    this.map = this.form.value;
+    this.compInteraction.save(this.index, this.map);
+    console.log('--------')
   }
 
 }
+

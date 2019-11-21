@@ -1,7 +1,4 @@
-<p>child works!</p>
-
 <div class="container">
-
 
     <form [formGroup]="form">
 
@@ -44,5 +41,10 @@
         <input type="text" formControlName="time">
 
     </form>
-    <button (click)="submit(form)">Добавить</button>
+
+    <button (click)="save(form)">Добавить</button>
+
+    <button (click)="removeMe(index)">I am a Child component, click to Remove
+    </button>
+
 </div>
