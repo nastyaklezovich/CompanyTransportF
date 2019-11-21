@@ -12,12 +12,10 @@ import { ViewCompaniesComponent } from './admin/view-companies/view-companies.co
 import { EditCompanyComponent } from './admin/view-companies/edit-company/edit-company.component';
 import { AddTransportComponent } from './admin/add-transport/add-transport.component';
 import { ViewTransportsComponent } from './admin/view-transports/view-transports.component';
-import { AddMapComponent } from './admin/add-map/add-map.component';
 import { ViewMapsComponent } from './admin/view-maps/view-maps.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { AddUserComponent } from './admin/add-user/add-user.component';
 import { ViewUsersComponent } from './admin/view-users/view-users.component';
-import { AddPointsComponent } from './admin/view-maps/add-points/add-points.component';
 import { ParentComponent } from './admin/parent/parent.component';
 
 const routes: Routes = [
@@ -38,19 +36,8 @@ const routes: Routes = [
         component: ParentComponent
       },
       {
-        path: "addmap",
-        component: AddMapComponent
-      },
-      {
         path: "viewmaps",
         component: ViewMapsComponent,
-        children: [
-          {
-            path: "addpoints/:id",
-            component: AddPointsComponent,
-          }
-        ]
-
       },
       {
         path: "addtransport",

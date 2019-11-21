@@ -9,7 +9,7 @@ import { AuthService } from '../services';
 export class AuthInterceptor implements HttpInterceptor {
   constructor(private authenticationService: AuthService) {}
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log("OOOOO");
+  
     const user = this.authenticationService.currentUserVal;
     if (user && user.authdata) {
     req = req.clone({

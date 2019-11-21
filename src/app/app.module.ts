@@ -18,7 +18,6 @@ import { ViewCompaniesComponent } from './admin/view-companies/view-companies.co
 import { EditCompanyComponent } from './admin/view-companies/edit-company/edit-company.component';
 import { AddTransportComponent } from './admin/add-transport/add-transport.component';
 import { ViewTransportsComponent } from './admin/view-transports/view-transports.component';
-import { AddMapComponent } from './admin/add-map/add-map.component';
 import { ViewMapsComponent } from './admin/view-maps/view-maps.component';
 
 import { AuthInterceptor } from './core/middleware';
@@ -26,10 +25,10 @@ import { RegistrationComponent } from './registration/registration.component';
 import { AddUserComponent } from './admin/add-user/add-user.component';
 import { ViewUsersComponent } from './admin/view-users/view-users.component';
 import { ItemComponent } from './item/item.component';
-import { AddPointsComponent } from './admin/view-maps/add-points/add-points.component';
 import { BrowserAnimationsModule, ɵBrowserAnimationBuilder } from '@angular/platform-browser/animations';
 import { ParentComponent } from './admin/parent/parent.component';
 import { ChildComponent } from './admin/child/child.component';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
@@ -47,15 +46,14 @@ import { ChildComponent } from './admin/child/child.component';
     EditCompanyComponent,
     AddTransportComponent,
     ViewTransportsComponent,
-    AddMapComponent,
     ViewMapsComponent,
     RegistrationComponent,
     AddUserComponent,
     ViewUsersComponent,
     ItemComponent,
-    AddPointsComponent,
     ParentComponent,
     ChildComponent,
+    HeaderComponent,
   ],
   entryComponents: [ChildComponent],
   imports: [

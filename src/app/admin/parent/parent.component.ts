@@ -29,6 +29,8 @@ export class ParentComponent {
     currentComponent.selfRef = currentComponent;
     currentComponent.index = ++this.index;
 
+    console.log(currentComponent.index);
+
     // prividing parent Component reference to get access to parent class methods
     currentComponent.compInteraction = this;
 
