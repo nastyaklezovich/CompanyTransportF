@@ -13,11 +13,11 @@ export class AuthInterceptor implements HttpInterceptor {
     const user = this.authenticationService.currentUserVal;
     if (user && user.authdata) {
     req = req.clone({
-      // setHeaders: {
-      //   'Content-Type' : 'application/json; charset=utf-8',
-      //   'Accept'       : 'application/json',
-      //   'Authorization': `Basic ${user.authdata}`,
-      // },
+      setHeaders: {
+        'Content-Type' : 'application/json; charset=utf-8',
+        'Accept'       : 'application/json',
+        'Authorization': `Basic ${user.authdata}`,
+      },
     });
   }
 
