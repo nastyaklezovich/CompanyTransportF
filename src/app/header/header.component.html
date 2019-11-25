@@ -1,60 +1,71 @@
-<p>header works!</p>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Expand at lg</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05"
-        aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+  <a class="navbar-brand" href="#">Expand at lg</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse"
+          data-target="#navbarsExample05"
+          aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <div class="collapse navbar-collapse" id="navbarsExample05">
-        <ul class="navbar-nav mr-auto">
+  <div class="collapse navbar-collapse" id="navbarsExample05">
+    <ul class="navbar-nav mr-auto">
 
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
 
-            <li class="nav-item active">
-                <a class="nav-link" href="admin">Админ</a>
-            </li>
 
-            <li class="nav-item active">
-                <a class="nav-link" href="user">Пользователь</a>
-            </li>
 
-            <ng-template>
+      <ng-container *ngIf="isAuthenthicated; then loggedIn; else loggedOut">
+      </ng-container>
 
-            </ng-template>
+      <ng-template #loggedOut>
+        <li class="nav-item">
+          <a class="nav-link" href="auth">Sign in</a>
+        </li>
 
-            <ng-container *ngIf="isAuthenthicated; then loggedIn; else loggedOut">
-            </ng-container>
+        <li class="nav-item">
+          <a class="nav-link" href="registration">Sign up</a>
+        </li>
+      </ng-template>
 
-            <ng-template #loggedOut>
-                <li class="nav-item">
-                    <a class="nav-link" href="auth">Sign in</a>
-                </li>
+      <ng-template #loggedIn>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="registration">Sign up</a>
-                </li>
-            </ng-template>
+        <li class="nav-item">
+          <a class="nav-link waves-effect" (click)="logout()">Logout</a>
+        </li>
 
-            <ng-template #loggedIn>
-                <li class="nav-item">
-                    <a class="nav-link waves-effect" (click)="logout()">Logout</a>
-                </li>
-            </ng-template>
 
-            <!-- <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown05" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">Маршруты</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown05">
-                    <a class="dropdown-item" href="admin/parent">Добавление маршрутов</a>
-                    <a class="dropdown-item" href="admin/viewmaps">Просмотр всех маршрутов</a>
-                </div>
-            </li> -->
-        </ul>
-        <form class="form-inline my-2 my-md-0">
-            <input class="form-control" type="text" placeholder="Search">
-        </form>
-    </div>
+        <ng-container *ngIf="isAdmin ; then Admin; else User">
+
+        </ng-container>
+
+
+        <ng-template #Admin>
+          <li class="nav-item active">
+            <a class="nav-link" [routerLink]="['/admin']">Админ</a>
+          </li>
+        </ng-template>
+
+        <ng-template #User>
+          <li class="nav-item active">
+            <a class="nav-link" routerLink="/user">Пользователь</a>
+          </li>
+        </ng-template>
+
+      </ng-template>
+
+
+      <!-- <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="https://example.com" id="dropdown05" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">Маршруты</a>
+          <div class="dropdown-menu" aria-labelledby="dropdown05">
+              <a class="dropdown-item" href="admin/parent">Добавление маршрутов</a>
+              <a class="dropdown-item" href="admin/viewmaps">Просмотр всех маршрутов</a>
+          </div>
+      </li> -->
+    </ul>
+    <form class="form-inline my-2 my-md-0">
+      <input class="form-control" type="text" placeholder="Search">
+    </form>
+  </div>
 </nav>
