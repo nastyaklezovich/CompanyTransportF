@@ -1,6 +1,7 @@
 import { ComponentRef, ComponentFactoryResolver, ViewContainerRef, ViewChild, Component } from "@angular/core";
 import { ChildComponent } from '../child/child.component'
 import Map from '../../Map'
+import { MapService } from 'src/app/map.service';
 
 @Component({
   selector: 'app-parent',
@@ -13,11 +14,13 @@ export class ParentComponent {
 
   index: number = 0;
 
+  isMap= false;
+
   componentsReferences = [];
 
   mapList: Array<Map> = [];
 
-  constructor(private CFR: ComponentFactoryResolver) {
+  constructor(private CFR: ComponentFactoryResolver, private ms: MapService) {
   }
 
   createComponent() {
@@ -59,12 +62,18 @@ export class ParentComponent {
     this.componentsReferences = this.componentsReferences.filter(x => x.instance.index !== index);
   }
 
-  
+
   save(index: number, map: Map) {
     console.log('PARENT');
     console.log(map.start_point);
     this.mapList.push(map);
     console.log(this.mapList);
+    alert('Отрезок сохранен!');
+    this.isMap = true;
+  }
+
+  saveMap() {
+    this.ms.add_map(this.mapList);
   }
 
 }

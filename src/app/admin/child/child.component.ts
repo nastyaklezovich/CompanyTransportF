@@ -20,40 +20,18 @@ export interface myinterface {
 export class ChildComponent {
 
   public index: number;
+
   public selfRef: ChildComponent;
 
   form: FormGroup;
 
   map: Map;
 
-
-  //interface for Parent-Child interaction
   public compInteraction: myinterface;
 
-  points: Point[] = [
-    { name_point: 'Москва', id: '1' },
-    { name_point: 'Минск', id: '2' },
-    { name_point: 'Рига', id: '3' },
-  ]
+  points: Point[];
 
-  transports: Transport[] = [
-    {
-      name_transport: 'BMW',
-      speed: '2',
-      id_company: '1',
-      max_weight: '200',
-      tariff_plan: '200',
-      id: '1',
-    },
-    {
-      name_transport: 'AUDI',
-      speed: '2',
-      id_company: '2',
-      max_weight: '300',
-      tariff_plan: '350',
-      id: '2',
-    },
-  ]
+  transports: Transport[];
 
 
   constructor(private fb: FormBuilder, private ps: PointService, private ts: TransportService) {
@@ -62,13 +40,24 @@ export class ChildComponent {
         start_point: ['', Validators.required],
         end_point: ['', Validators.required],
         transport: ['', Validators.required],
-        distance: ['', Validators.required],
-        cost: ['', Validators.required],
-        time: ['', Validators.required],
+        distance: ['', Validators.compose([
+          Validators.maxLength(15),
+          Validators.pattern(/^[0-9]/),
+          Validators.required
+        ])],
+        cost: ['', Validators.compose([
+          Validators.maxLength(25),
+          Validators.pattern(/^[0-9]/),
+          Validators.required
+        ])],
+        time: ['', Validators.compose([
+          Validators.maxLength(15),
+          Validators.pattern(/^[0-9]/),
+          Validators.required
+        ])],
       }
     );
   }
-
 
   removeMe(index) {
     this.compInteraction.remove(index)
@@ -80,6 +69,35 @@ export class ChildComponent {
     this.map = this.form.value;
     this.compInteraction.save(this.index, this.map);
     console.log('--------')
+  }
+
+  ngOnInit() {
+    this.ps.get_point_name().subscribe((data: Point[]) => {
+      console.log(data);
+      this.points = data;
+    });
+    this.ts.get_transports().subscribe((data: Transport[]) => {
+      console.log(data);
+      this.transports = data;
+    })
+  }
+
+  account_validation_messages = {
+    'distance': [
+      { type: 'required', message: 'Заполните поле' },
+      { type: 'pattern', message: 'Расстояние может содержать только числовые значения' },
+      { type: 'maxlength', message: 'Расстояние не может содержать больше 15 символов' },
+    ],
+    'cost': [
+      { type: 'required', message: 'Заполните поле' },
+      { type: 'pattern', message: 'Стоимость может содержать только числовые значения' },
+      { type: 'maxlength', message: 'Стоимость не может содержать больше 25 символов' },
+    ],
+    'time': [
+      { type: 'required', message: 'Заполните поле' },
+      { type: 'pattern', message: 'Время может содержать только числовые значения' },
+      { type: 'maxlength', message: 'Время не может содержать больше 15 символов' },
+    ],
   }
 
 }

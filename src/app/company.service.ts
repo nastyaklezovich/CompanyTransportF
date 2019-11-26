@@ -28,7 +28,7 @@ export class CompanyService {
   get_compamies() {
     return this
       .http
-      .get(`${this.uri}/companies`);
+      .get(`${this.uri}/company`);
   };
 
   edit_company(id) {

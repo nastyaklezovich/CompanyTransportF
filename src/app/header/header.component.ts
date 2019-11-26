@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User, AuthService } from '../core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,7 @@ export class HeaderComponent implements OnInit {
 
   private currentUser: User;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,  private router: Router) { }
 
   role: string;
 
@@ -20,6 +21,7 @@ export class HeaderComponent implements OnInit {
 
   public logout() {
     this.authService.logout();
+    this.router.navigate(["/"]);
   }
 
   public get isAuthenthicated(): boolean {

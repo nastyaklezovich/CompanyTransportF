@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS, /* other http imports */ } from "@angular/common/http";
 import { Routes, RouterModule } from '@angular/router';
+// import { ModalModule } from "ngx-bootstrap/modal";
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -67,6 +69,7 @@ import {AuthService} from "./core/services";
     HttpClientModule,
     RouterModule,
     BrowserAnimationsModule,
+
   ],
   providers: [
 

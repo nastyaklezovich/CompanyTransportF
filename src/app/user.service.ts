@@ -27,7 +27,7 @@ export class UserService {
     get_users() {
         return this
             .http
-            .get(`${this.uri}/users`);
+            .get(`${this.uri}/user`);
     }
 
     delete_user(id) {

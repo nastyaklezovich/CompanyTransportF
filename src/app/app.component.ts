@@ -7,6 +7,8 @@ import { ItemComponent } from './item/item.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  
   title = 'my-app';
 }
 

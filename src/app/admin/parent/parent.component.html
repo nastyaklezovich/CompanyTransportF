@@ -1,8 +1,15 @@
-<button type="button" (click)="createComponent()">
-    Добавить компонент
-</button>
-<div class="container">
-    <div class="row">
-        <ng-template #viewContainerRef></ng-template>
+<div class="container justify-content-center align-items-center text-center">
+    <div class="row justify-content-center align-items-center text-center">
+        <ng-template #viewContainerRef class="col"></ng-template>
     </div>
+    <button type="button" class="btn btn-primary" (click)="createComponent()" style="width: 250px; margin: 10px;">
+        Добавить отрезок
+    </button>
+    <ng-container *ngIf="isMap; then save; else notSave"></ng-container>
+    <ng-template #save>
+        <button type="button" class="btn btn-primary" (click)="saveMap()" style="width: 250px; margin: 10px;">Сохранить
+            маршрут</button>
+    </ng-template>
+
+
 </div>

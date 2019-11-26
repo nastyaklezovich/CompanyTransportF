@@ -14,6 +14,6 @@ export class PointService {
   get_point_name(){
     return this
     .http
-    .get(`${this.uri}/points`);
+    .get(`${this.uri}/point`);
   };
 }

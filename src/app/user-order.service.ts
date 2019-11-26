@@ -12,6 +12,6 @@ export class UserOrderService {
   getUserOrders() {
     return this
       .http
-      .get(`${this.uri}/userOrders`);
+      .get(`${this.uri}/userOrder`);
   }
 }

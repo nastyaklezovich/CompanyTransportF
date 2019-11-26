@@ -21,7 +21,7 @@ export class CalculateService {
 
     console.log(obj);
 
-    this.http.post(`${this.uri}/map`, obj)
+    this.http.post(`${this.uri}/map/search`, obj)
       .subscribe(res => { console.log('Done'); });
   }
 }
