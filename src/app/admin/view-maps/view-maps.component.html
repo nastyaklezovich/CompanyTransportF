@@ -42,6 +42,13 @@
             </button>
         </div>
         <div class="modal-body">
+
+            <ul>
+                <li *ngFor="let point of res.points">
+                    {{point.point}}
+                </li>
+            </ul>
+
             <!-- <ul>
                 <li *ngFor="let  of heroes">
                     {{ hero }}

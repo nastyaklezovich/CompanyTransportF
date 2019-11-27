@@ -1,88 +1,81 @@
 <div class="container">
-    <h2 class="text-center">Расчет стоимости перевозки</h2>
+    <h4 class="text-center">Сделать заказ</h4>
     <form [formGroup]="calculateForm" role="form" class="form-group" novalidate>
 
-        <div class="form-group">
-            <label class="control-label" for="start_point">Пункт отправления</label>
-            <select class="form-control" name="start_point" id="start_point" [(ngModel)]="start_point"
-                [ngModelOptions]="{standalone: true}">
-                <option *ngFor="let point of points" [value]="point.name_point">
-                    {{point.name_point}}
-                </option>
-            </select>
-        </div>
-        <div *ngIf="calculateForm.controls['start_point'].invalid && (calculateForm.controls['start_point'].dirty || calculateForm.controls['start_point'].touched)"
-            class="alert alert-danger">
-            <div *ngIf="calculateForm.controls['start_point'].errors.required">
-                Заполните данное поле!
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label class="control-label" for="start_point">Пункт отправления</label>
+                    <select class="form-control" name="start_point" id="start_point" [(ngModel)]="start_point"
+                        [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let point of points" [value]="point.name_point">
+                            {{point.name_point}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="form-group">
+                    <label class="control-label" for="end_point">Пункт доставки</label>
+                    <select class="form-control" name="end_point" id="end_point" [(ngModel)]="end_point"
+                        [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let point of points" [value]="point.name_point">
+                            {{point.name_point}}
+                        </option>
+                    </select>
+                </div>
             </div>
         </div>
 
-        <div class="form-group">
-            <label class="control-label" for="end_point">Пункт доставки</label>
-            <select class="form-control" name="end_point" id="end_point" [(ngModel)]="end_point"
-                [ngModelOptions]="{standalone: true}">
-                <option *ngFor="let point of points" [value]="point.name_point">
-                    {{point.name_point}}
-                </option>
-            </select>
-        </div>
-        <div *ngIf="calculateForm.controls['end_point'].invalid && (calculateForm.controls['end_point'].dirty || calculateForm.controls['end_point'].touched)"
-            class="alert alert-danger">
-            <div *ngIf="calculateForm.controls['end_point'].errors.required">
-                Заполните данное поле!
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label class="control-label" for="name_product">Название товара</label>
+                    <input formControlName="name_product" class="form-control name_product" type="text" #name_product>
+                </div>
+                <div *ngFor="let validation of account_validation_messages.name_product">
+                    <div class="alert alert-danger" *ngIf="calculateForm.get('name_product').hasError(validation.type) &&
+                                   (calculateForm.get('name_product').dirty ||
+                                   calculateForm.get('name_product').touched)">
+                        {{validation.message}}
+                    </div>
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <label class="control-label" for="weight_product">Вес товара</label>
-            <input formControlName="weight_product" class="form-control weight_product" type="number" #weight_product>
-        </div>
-        <div *ngIf="calculateForm.controls['weight_product'].invalid && (calculateForm.controls['weight_product'].dirty || calculateForm.controls['weight_product'].touched)"
-            class="alert alert-danger">
-            <div *ngIf="calculateForm.controls['weight_product'].errors.required">
-                Заполните данное поле!
+            <div class="col">
+                <div class="form-group">
+                    <label class="control-label" for="type_product">Тип перевозимого товара</label>
+                    <select class="form-control" name="type_product" id="type_product" [(ngModel)]="type_product"
+                        [ngModelOptions]="{standalone: true}">
+                        <option *ngFor="let type of types" [value]="type.type_product">
+                            {{type.type_product}}
+                        </option>
+                    </select>
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <label class="control-label" for="volume_product">Объем товара</label>
-            <input formControlName="volume_product" class="form-control volume_product" type="number" #volume_product>
-        </div>
-        <div *ngIf="calculateForm.controls['volume_product'].invalid && (calculateForm.controls['volume_product'].dirty || calculateForm.controls['volume_product'].touched)"
-            class="alert alert-danger">
-            <div *ngIf="calculateForm.controls['volume_product'].errors.required">
-                Заполните данное поле!
+            <div class="col">
+                <div class="form-group">
+                    <label class="control-label" for="weight_product">Вес товара</label>
+                    <input formControlName="weight_product" class="form-control weight_product" type="text"
+                        #weight_product>
+                </div>
+                <div *ngFor="let validation of account_validation_messages.weight_product">
+                    <div class="alert alert-danger" *ngIf="calculateForm.get('weight_product').hasError(validation.type) &&
+                                       (calculateForm.get('weight_product').dirty ||
+                                       calculateForm.get('weight_product').touched)">
+                        {{validation.message}}
+                    </div>
+                </div>
             </div>
         </div>
-
-        <!-- <div class="form-group">
-            <label class="control-label" for="type_product">Тип перевозимого товара</label>
-            <select class="form-control" name="type_product" id="type_product" [(ngModel)]="type_product"
-                [ngModelOptions]="{standalone: true}">
-                <option *ngFor="let type of types" [value]="type.type_product">
-                    {{type.type_product}}
-                </option>
-            </select>
-        </div>
-        <div *ngIf="calculateForm.controls['type_product'].invalid && (calculateForm.controls['type_product'].dirty || calculateForm.controls['type_product'].touched)"
-            class="alert alert-danger">
-            <div *ngIf="calculateForm.controls['type_product'].errors.required">
-                Заполните данное поле!
-            </div>
-        </div> -->
 
         <div class="form-group justify-content-center align-items-center text-center">
-            
-            <button
-                (click)="find_route(start_point, end_point, weight_product.value, volume_product.value)"
-                class="btn btn-primary" >            
-                Раcсчитать
+            <button (click)="make_order(start_point, end_point, weight_product.value, type_product, name_product.value)"
+                class="btn btn-primary">
+                Заказать
             </button>
         </div>
     </form>
-
-    <router-outlet></router-outlet>
-    
-
 </div>

@@ -15,6 +15,7 @@ export class ViewMapsComponent implements OnInit {
 
   res: {} = {};
   map: {} = {};
+  mas: [] =[];
 
   modalRef: BsModalRef;
 
@@ -29,13 +30,11 @@ export class ViewMapsComponent implements OnInit {
 
   openModal(template: TemplateRef<any>, id) {
     this.modalRef = this.modalService.show(template);
-    console.log('_________________')
     console.log(id);
-    this.ms.get_map(id).subscribe((res => {
-      console.log('..............');
-      console.log(res);
+    this.ms.get_map(id).subscribe(((res: Map[]) => {
       this.map = { ...res };
       this.res = res;
+
     }));
   }
 

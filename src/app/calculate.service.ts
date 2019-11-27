@@ -11,17 +11,12 @@ export class CalculateService {
 
   constructor(private http: HttpClient) { }
 
-  find_route(start_point, end_point, weight_product, volume_product) {
-    const obj = {
-      start_point: start_point,
-      end_point: end_point,
-      weight_product: weight_product,
-      volume_product: volume_product,
-    };
-
+  make_order(obj) {
     console.log(obj);
-
-    this.http.post(`${this.uri}/map/search`, obj)
-      .subscribe(res => { console.log('Done'); });
+    this.http.post(`${this.uri}/userOrder`, obj)
+      .subscribe(res => { alert('Ваш заказ принят') },
+      error=>{
+        alert('Ваш заказ отклонен')
+      });
   }
 }

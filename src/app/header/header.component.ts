@@ -29,8 +29,6 @@ export class HeaderComponent implements OnInit {
   }
 
   public get isAdmin(): boolean{
-    console.log("aa")
-    console.log(this.currentUser.roles);
     return this.currentUser.roles == "ADMIN";
   }
 

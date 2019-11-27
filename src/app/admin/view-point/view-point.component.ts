@@ -16,7 +16,7 @@ export class ViewPointComponent implements OnInit {
   ngOnInit() {
     this.ps.get_point_name().subscribe((data: Point[]) => {
       console.log(data);
-      this.points = data;
+      this.points = data;      
     })
   }
 

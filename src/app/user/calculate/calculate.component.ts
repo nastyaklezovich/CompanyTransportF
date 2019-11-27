@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import Point from '../../Point';
-import {CalculateService} from '../../calculate.service';
-import {PointService} from '../../point.service';
-import {Router} from "@angular/router";
+import { CalculateService } from '../../calculate.service';
+import { PointService } from '../../point.service';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-calculate',
@@ -14,6 +14,11 @@ export class CalculateComponent implements OnInit {
 
   points: Point[];
 
+  types = [
+    { type_product: '1' },
+    { type_product: '2' },
+  ]
+
   calculateForm: FormGroup;
 
   constructor(private router: Router, private fb: FormBuilder, private cs: CalculateService, private ps: PointService) {
@@ -23,17 +28,34 @@ export class CalculateComponent implements OnInit {
   createForm() {
     this.calculateForm = this.fb.group({
       start_point: ['', Validators.required],
-      end_point:['', Validators.required],
-      weight_product: ['', Validators.required],
-      volume_product: ['', Validators.required],
-      // type_product: ['', Validators.required],
+      end_point: ['', Validators.required],
+      weight_product: ['', Validators.compose([
+        Validators.maxLength(6),
+        Validators.pattern(/^[0-9]/),
+        Validators.required
+      ])],
+      type_product: ['', Validators.required],
+      name_product: ['', Validators.compose([
+        Validators.pattern('^[A-Za-zА-Яа-яЁё]+$'),
+        Validators.maxLength(25),
+        Validators.minLength(3),
+        Validators.required
+      ])],
     })
   }
 
-  find_route(start_point, end_point, weight_product, volume_product){
-    this.cs.find_route(start_point, end_point, weight_product, volume_product);
-    this.router.navigate(['/user/calculate/findroot']);
+  make_order(start_point, end_point, weight_product, type_product, name_product) {
+    const obj = {
+      start_point: start_point,
+      end_point: end_point,
+      weight_product: weight_product,
+      type_product: type_product,
+      name_product: name_product,
+    }
+    console.log(obj);
+    this.cs.make_order(obj);
   }
+
 
   ngOnInit() {
     this.ps.get_point_name().subscribe((data: Point[]) => {
@@ -43,4 +65,17 @@ export class CalculateComponent implements OnInit {
 
   }
 
+  account_validation_messages = {
+    'name_product': [
+      { type: 'required', message: 'Заполните поле' },
+      { type: 'pattern', message: 'Название может содержать только символьные значения' },
+      { type: 'minlength', message: 'Название должно содержать не менее 3 символов' },
+      { type: 'maxlength', message: 'Название не может содержать больше 25 символов' },
+    ],
+    'weight_product': [
+      { type: 'required', message: 'Заполните поле' },
+      { type: 'pattern', message: 'Вес может содержать только числовые значения' },
+      { type: 'maxlength', message: 'Вес не может содержать больше 6 символов' },
+    ],
+  }
 }

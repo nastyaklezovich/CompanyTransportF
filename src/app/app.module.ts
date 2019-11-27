@@ -12,7 +12,6 @@ import { HomeComponent } from './home/home.component';
 import { AuthComponent } from './auth/auth.component';
 import { UserComponent } from './user/user.component';
 import { CalculateComponent } from './user/calculate/calculate.component';
-import { FindRootComponent } from './user/calculate/find-root/find-root.component';
 import { UserOrderComponent } from './user/user-order/user-order.component';
 import { AdminComponent } from './admin/admin.component';
 import { AddCompanyComponent } from './admin/add-company/add-company.component';
@@ -44,7 +43,6 @@ import { ViewPointComponent } from './admin/view-point/view-point.component';
     AuthComponent,
     UserComponent,
     CalculateComponent,
-    FindRootComponent,
     UserOrderComponent,
     AdminComponent,
     AddCompanyComponent,
