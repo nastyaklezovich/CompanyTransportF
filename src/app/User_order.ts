@@ -5,4 +5,5 @@ export default class form {
     full_time: String;
     start_date: String;
     end_date: String;
+    product: String;
 }

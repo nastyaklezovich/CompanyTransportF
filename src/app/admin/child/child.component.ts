@@ -17,6 +17,7 @@ export interface myinterface {
   templateUrl: './child.component.html',
   styleUrls: ['./child.component.css']
 })
+
 export class ChildComponent {
 
   public index: number;

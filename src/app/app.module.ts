@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS, /* other http imports */ } from "@angular/common/http";
 import { Routes, RouterModule } from '@angular/router';
-// import { ModalModule } from "ngx-bootstrap/modal";
+import { ModalModule } from "ngx-bootstrap/modal";
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -33,6 +33,8 @@ import { ChildComponent } from './admin/child/child.component';
 import { HeaderComponent } from './header/header.component';
 import {AuthGuard} from "./core/auth";
 import {AuthService} from "./core/services";
+import { AddPointComponent } from './admin/add-point/add-point.component';
+import { ViewPointComponent } from './admin/view-point/view-point.component';
 
 
 @NgModule({
@@ -58,6 +60,8 @@ import {AuthService} from "./core/services";
     ParentComponent,
     ChildComponent,
     HeaderComponent,
+    AddPointComponent,
+    ViewPointComponent,
   ],
   entryComponents: [ChildComponent],
   imports: [
@@ -69,6 +73,7 @@ import {AuthService} from "./core/services";
     HttpClientModule,
     RouterModule,
     BrowserAnimationsModule,
+    ModalModule.forRoot(),
 
   ],
   providers: [

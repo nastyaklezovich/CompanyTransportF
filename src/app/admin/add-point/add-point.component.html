@@ -1,0 +1,23 @@
+<div class="container justify-content-center align-items-center">
+    <h2 class="text-center">Добавление точки</h2>
+    <form [formGroup]="addPointForm" role="form" class="form-group" novalidate>
+        <div class="justify-content-center align-items-center">
+            <div class="form-group">
+                <label class="control-label" for="name_point">Название:</label>
+                <input formControlName="name_point" class="form-control name_point" type="text" #name_point>
+            </div>
+            <div *ngFor="let validation of account_validation_messages.name_point">
+                <div class="alert alert-danger" *ngIf="addPointForm.get('name_point').hasError(validation.type) &&
+                                           (addPointForm.get('name_point').dirty ||
+                                           addPointForm.get('name_point').touched)">
+                    {{validation.message}}
+                </div>
+            </div>
+        </div>
+        <div class="form-group justify-content-center align-items-center text-center">
+            <button (click)="add_point(name_point.value)" class="btn btn-primary">
+                Добавить
+            </button>
+        </div>
+    </form>
+</div>

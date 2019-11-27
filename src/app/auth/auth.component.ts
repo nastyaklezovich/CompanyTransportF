@@ -27,8 +27,14 @@ export class AuthComponent implements OnInit {
     this.authForm = this.formBuilder.group({
       // login: ["", Validators.required],
       // password: ["", Validators.required]
-      login: ["youremail@gmail.com", [Validators.required, Validators.email]],
-      password: ["password", [Validators.required,Validators.minLength(6)]]
+      login: ['', Validators.compose([
+        Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'),
+        Validators.required
+      ])],
+      password: ['', Validators.compose([
+        Validators.minLength(5),
+        Validators.required
+      ])],
     });
 
     this.returnUrl = this.route.snapshot.queryParams["returnUrl"] || "/";
@@ -58,6 +64,18 @@ export class AuthComponent implements OnInit {
           alert("Некорректный логин или пароль!")
         }
       );
+  }
+
+  account_validation_messages = {
+    'login': [
+      { type: 'required', message: 'Заполните поле' },
+      { type: 'pattern', message: 'Email должен соответствовать паттерну youremail@company.com' },
+    ],
+    'password': [
+      { type: 'required', message: 'Заполните поле' },
+      { type: 'minlength', message: 'Пароль должен содержать не менее 5 символов' },
+    ],
+
   }
 
 }

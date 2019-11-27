@@ -17,6 +17,8 @@ import {RegistrationComponent} from './registration/registration.component';
 import {AddUserComponent} from './admin/add-user/add-user.component';
 import {ViewUsersComponent} from './admin/view-users/view-users.component';
 import {ParentComponent} from './admin/parent/parent.component';
+import { AddPointComponent } from './admin/add-point/add-point.component';
+import { ViewPointComponent } from './admin/view-point/view-point.component';
 
 const routes: Routes = [
   {
@@ -72,7 +74,17 @@ const routes: Routes = [
       {
         path: "viewusers",
         component: ViewUsersComponent
+      },
+      {
+        path:"addpoint",
+        component: AddPointComponent,
+      },
+      {
+        path:"viewpoint",
+        component: ViewPointComponent
+
       }
+
 
     ]
   },

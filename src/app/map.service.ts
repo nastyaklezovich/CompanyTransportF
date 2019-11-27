@@ -31,7 +31,7 @@ export class MapService {
     console.log(id);
   }
 
-  edit_map(id) {
+  get_map(id) {
     return this.http.get(`${this.uri}/map/${id}`)
   }
 

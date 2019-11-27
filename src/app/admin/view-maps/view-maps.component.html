@@ -22,9 +22,10 @@
                 <td>{{ map.distance}}</td>
                 <td>{{ map.time}}</td>
                 <td>{{ map.cost}}</td>
-                <td><a><span class="fa fa-info-circle fa-2x"></span></a></td>
+                <td><a (click)="openModal(template, map.id)" class="btn"><span
+                            class="fa fa-info-circle fa-2x"></span></a>
+                </td>
 
-                <!-- <td><a [routerLink]="['./addpoints', map.id]" class="btn"></a></td> -->
                 <!-- <td><a [routerLink]="['./editmap', map.id]" class="btn"><span
                             class="fa fa-edit fa-2x"></span></a></td> -->
                 <!-- <td><a (click)="delete_map(map.id)" class="btn"><span class="fa fa-trash fa-2x"></span></a></td> -->
@@ -32,5 +33,38 @@
         </tbody>
     </table>
     <hr>
+    <ng-template #template>
+
+        <div class="modal-header">
+            <h5 class="text-center">Маршрут {{map.start_point}} - {{map.end_point}}</h5>
+            <button type="button" class="close" (click)="modalRef.hide()" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <!-- <ul>
+                <li *ngFor="let  of heroes">
+                    {{ hero }}
+                </li>
+            </ul> -->
+            <!-- <form [formGroup]="depForm" novalidate>
+              <div class="form-group">
+                <label>Название департамента</label>
+                <input type="text" class="form-control" formControlName="departement_name" #departement_name
+                  [(ngModel)]="res.departement_name" [value]="res.departement_name" />
+              </div>
+              <div
+                *ngIf="depForm.controls['departement_name'].invalid && (depForm.controls['departement_name'].dirty || depForm.controls['departement_name'].touched)"
+                class="alert alert-danger">
+                <div *ngIf="depForm.controls['departement_name'].errors.required">
+                  Поле "Название департамента" пусто!
+                </div>
+              </div>
+            </form> -->
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Отменить</button>
+        </div>
+    </ng-template>
     <router-outlet></router-outlet>
 </div>

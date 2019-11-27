@@ -16,4 +16,11 @@ export class PointService {
     .http
     .get(`${this.uri}/point`);
   };
+
+  add_point(obj){
+    this.http.post(`${this.uri}/point`, obj)
+      .subscribe(res => { console.log('Done'); alert('Точка была добавлена!') },
+        error => { alert('Ошибка добавления точки!') });
+  
+  }
 }
