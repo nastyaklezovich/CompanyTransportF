@@ -9,21 +9,17 @@ import { UserOrderService } from '../../../app/user-order.service'
 })
 export class UserOrderComponent implements OnInit {
 
-  user_order: User_order[];
-
-  error:any;
-  isOk: boolean;
+  user_orders: User_order[];
 
   constructor(private uos: UserOrderService) { }
 
   ngOnInit() {
-    this.uos.getUserOrders().subscribe((data: User_order[]) => {
+    var aValue = JSON.parse(localStorage.getItem('user'));
+    var id = aValue.idUser;
+    this.uos.getUserOrders(id).subscribe((data: User_order[]) => {
       console.log(data);
-      this.user_order = data;
-      this.isOk=true;
-    },
-    error => {if(error.status === 204){this.isOk=false}; this.error = error.message; console.log(error);}
-    );
+      this.user_orders = data;
+    });
   }
 
 }

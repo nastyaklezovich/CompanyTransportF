@@ -45,14 +45,20 @@ export class CalculateComponent implements OnInit {
   }
 
   make_order(start_point, end_point, weight_product, type_product, name_product) {
+    
+    var aValue = JSON.parse(localStorage.getItem('user'));
+
+    var id = aValue.idUser;
+  
     const obj = {
       start_point: start_point,
       end_point: end_point,
       weight_product: weight_product,
       type_product: type_product,
       name_product: name_product,
+      id_user: id,
     }
-    console.log(obj);
+    
     this.cs.make_order(obj);
   }
 

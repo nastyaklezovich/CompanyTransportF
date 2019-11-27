@@ -9,9 +9,9 @@ export class UserOrderService {
 
   constructor(private http: HttpClient) { }
 
-  getUserOrders() {
+  getUserOrders(id) {
     return this
       .http
-      .get(`${this.uri}/userOrder`);
+      .get(`${this.uri}/user-order/user/${id}`);
   }
 }
