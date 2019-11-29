@@ -73,7 +73,10 @@ export class ParentComponent {
   }
 
   saveMap() {
-    this.ms.add_map(this.mapList);
+    const obj = {
+      routeDtos: this.mapList,
+    }
+    this.ms.add_map(obj);
   }
 
 }

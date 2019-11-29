@@ -18,6 +18,9 @@ import {ViewUsersComponent} from './admin/view-users/view-users.component';
 import {ParentComponent} from './admin/parent/parent.component';
 import { AddPointComponent } from './admin/add-point/add-point.component';
 import { ViewPointComponent } from './admin/view-point/view-point.component';
+import { CarrierComponent } from './carrier/carrier.component';
+import { AcceptProductsComponent } from './carrier/accept-products/accept-products.component';
+import { MapProductsComponent } from './carrier/accept-products/map-products/map-products.component';
 
 const routes: Routes = [
   {
@@ -102,6 +105,25 @@ const routes: Routes = [
         component: UserOrderComponent,
       }
     ]
+  },
+  {
+    path:"carrier",
+    component: CarrierComponent,
+    canActivate: [AuthGuard],
+    data: {roles: [RoleType.Carrier]},
+    children: [
+      {
+        path: "acceptproducts",
+        component: AcceptProductsComponent,
+        children:[
+          {
+            path: "mapproducts/:id",
+            component: MapProductsComponent,
+          }
+        ]
+      }
+    ]
+
   }
 ];
 

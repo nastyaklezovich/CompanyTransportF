@@ -34,6 +34,9 @@ import {AuthGuard} from "./core/auth";
 import {AuthService} from "./core/services";
 import { AddPointComponent } from './admin/add-point/add-point.component';
 import { ViewPointComponent } from './admin/view-point/view-point.component';
+import { CarrierComponent } from './carrier/carrier.component';
+import { AcceptProductsComponent } from './carrier/accept-products/accept-products.component';
+import { MapProductsComponent } from './carrier/accept-products/map-products/map-products.component';
 
 
 @NgModule({
@@ -60,6 +63,9 @@ import { ViewPointComponent } from './admin/view-point/view-point.component';
     HeaderComponent,
     AddPointComponent,
     ViewPointComponent,
+    CarrierComponent,
+    AcceptProductsComponent,
+    MapProductsComponent,
   ],
   entryComponents: [ChildComponent],
   imports: [

@@ -32,4 +32,8 @@ export class HeaderComponent implements OnInit {
     return this.currentUser.roles == "ADMIN";
   }
 
+  public get isUser(): boolean{
+    return this.currentUser.roles == "USER"
+  }
+
 }

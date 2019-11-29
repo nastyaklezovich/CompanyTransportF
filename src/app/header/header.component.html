@@ -80,12 +80,13 @@
               <a class="dropdown-item" href="admin/viewusers">Просмотр всех пользователей</a>
             </div>
           </li>
-
-
-
         </ng-template>
 
-        <ng-template #User>
+        <ng-container #User *ngIf="isUser ; then user; else carrier">
+
+        </ng-container>
+
+        <ng-template #user>
           <li class="nav-item active">
             <a class="nav-link" routerLink="/user">Профиль</a>
           </li>
@@ -95,6 +96,14 @@
           <li class="nav-item active">
             <a class="nav-link" routerLink="user/orders">Заказы</a>
           </li>
+        </ng-template>
+
+        <ng-template #carrier>
+          <li class="nav-item active">
+            <a class="nav-link" routerLink="carrier/acceptproducts">Заказы</a>
+          </li>
+
+    
         </ng-template>
 
         <li class="nav-item">

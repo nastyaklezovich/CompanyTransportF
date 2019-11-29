@@ -11,11 +11,11 @@ export class MapService {
 
   constructor(private http: HttpClient) { }
 
-  add_map(mapList) {
+  add_map(obj) {
 
-    console.log(mapList);
+    console.log(obj);
 
-    this.http.post(`${this.uri}/map`, mapList)
+    this.http.post(`${this.uri}/map`, obj)
       .subscribe(res => { console.log('Done'); alert('Маршрут был добавлен!') },
         error => { alert('Ошибка добавления маршрута!') });
   }
