@@ -12,9 +12,12 @@ import Map from '../../../Map'
 export class MapProductsComponent implements OnInit {
 
   product: {} = {};
-  res: {} = {};
+  res: any = [];
   map: {} = {};
-  data: {} ={};
+  data: {} = {};
+  opt: any = [];
+  opt_product: {} = {};
+  isOptimal: boolean;
 
   constructor(private route: ActivatedRoute,
     private router: Router, private ps: ProductService, private ms: MapService) { }
@@ -36,5 +39,20 @@ export class MapProductsComponent implements OnInit {
     });
   }
 
+  calculate() {
+    this.route.params.subscribe(params => {
+      this.ps.get_optimal_product(params['id']).subscribe(opt => {
+        console.log(params['id']);
+        console.log(opt);
+        this.opt_product = { ...opt };
+        this.opt = opt;
+        this.isOptimal = true;
+      });
+    });
+  }
+
+  save_optimal_product() {
+
+  }
 
 }

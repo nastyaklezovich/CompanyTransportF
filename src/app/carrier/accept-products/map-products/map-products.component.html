@@ -1,1 +1,21 @@
-<h2>Маршрут {{data.start_point}} - {{data.end_point}}</h2>
+<div class="container">
+    <h2>Маршрут {{data.start_point}} - {{data.end_point}}</h2>
+    <div>ПРОДУКТЫ</div>
+    <div *ngFor="let product of res">
+        <div>{{product.name_product}}</div>
+    </div>
+    <div>
+        <button type="button" class="btn btn-secondary" (click)="calculate()">Рассчитать</button>
+    </div>
+    <ng-container *ngIf="isOptimal; then optimal; else notOptimal"></ng-container>
+    <ng-template #optimal>
+        <div>ОПТИМАЛЬНЫЕ ПРОДУКТЫ</div>
+        <div *ngFor="let product of opt">
+            <div>{{product.name_product}}</div>
+        </div>
+        <div>
+            <button type="button" class="btn btn-secondary" (click)="save_optimal_product()">Сохранить</button>
+        </div>
+    </ng-template>
+
+</div>

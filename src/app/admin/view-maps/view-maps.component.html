@@ -48,26 +48,6 @@
                     {{point.name_point}}
                 </li>
             </ul>
-
-            <!-- <ul>
-                <li *ngFor="let  of heroes">
-                    {{ hero }}
-                </li>
-            </ul> -->
-            <!-- <form [formGroup]="depForm" novalidate>
-              <div class="form-group">
-                <label>Название департамента</label>
-                <input type="text" class="form-control" formControlName="departement_name" #departement_name
-                  [(ngModel)]="res.departement_name" [value]="res.departement_name" />
-              </div>
-              <div
-                *ngIf="depForm.controls['departement_name'].invalid && (depForm.controls['departement_name'].dirty || depForm.controls['departement_name'].touched)"
-                class="alert alert-danger">
-                <div *ngIf="depForm.controls['departement_name'].errors.required">
-                  Поле "Название департамента" пусто!
-                </div>
-              </div>
-            </form> -->
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Отменить</button>

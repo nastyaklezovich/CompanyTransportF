@@ -15,5 +15,9 @@ export class ProductService {
         return this.http.get(`${this.uri}/product/carrier/map/${id}`);
     }
 
+    get_optimal_product(id){
+        return this.http.get(`${this.uri}/product/carrier/optimal/map/${id}`)
+    }
+
     
 }
