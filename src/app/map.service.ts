@@ -35,4 +35,8 @@ export class MapService {
     return this.http.get(`${this.uri}/map/${id}`)
   }
 
+  delete_map(id){
+    return this.http.delete(`${this.uri}/map/${id}`);
+  }
+
 }

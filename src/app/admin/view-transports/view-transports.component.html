@@ -14,18 +14,122 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let transport of transports; let i=index" >
+            <tr *ngFor="let transport of transports; let i=index">
                 <td>{{i+1}}</td>
                 <td>{{ transport.name_transport}}</td>
                 <td>{{ transport.speed}}</td>
                 <td>{{ transport.id_company}}</td>
                 <td>{{ transport.max_weight}}</td>
                 <td>{{ transport.tariff_plan}}</td>
-                <td><a [routerLink]="['./editcompany', transport.id]" class="btn"><span
-                    class="fa fa-edit fa-2x"></span></a></td>
+                <td><a (click)="open_modal(template, transport.id)" class="btn"><span
+                            class="fa fa-edit fa-2x"></span></a></td>
                 <td><a (click)="delete_transport(transport.id)" class="btn"><span
                             class="fa fa-trash-o fa-2x"></span></a></td>
             </tr>
         </tbody>
     </table>
+
+    <ng-template #template>
+        <div class="modal-header">
+            <h5>Редактирование</h5>
+            <button type="button" class="close" (click)="modalRef.hide()" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="modal-body">
+            <form [formGroup]="addTransportForm" role="form" class="form-group" novalidate>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="control-label" for="name_transport">Название транспорта</label>
+                            <input formControlName="name_transport" class="form-control name_transport" type="text"
+                                [(ngModel)]="res.name_transport" [value]="res.name_transport" #name_transport>
+                        </div>
+                        <div *ngFor="let validation of account_validation_messages.name_transport">
+                            <div class="alert alert-danger" *ngIf="addTransportForm.get('name_transport').hasError(validation.type) &&
+                                   (addTransportForm.get('name_transport').dirty ||
+                                   addTransportForm.get('name_transport').touched)">
+                                {{validation.message}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="control-label" for="id_company">Компания</label>
+                            <select class="form-control" name="id_company" id="id_company" [(ngModel)]="id_company"
+                                [ngModelOptions]="{standalone: true}">
+                                <option *ngFor="let company of companies" [value]="company.id">
+                                    {{company.name_company}}
+                                </option>
+                            </select>
+                        </div>
+                        <div *ngIf="addTransportForm.controls['id_company'].invalid && (addTransportForm.controls['id_company'].dirty || addTransportForm.controls['id_company'].touched)"
+                            class="alert alert-danger">
+                            <div *ngIf="addTransportForm.controls['id_company'].errors.required">
+                                Заполните данное поле!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="control-label" for="speed">Скорость (км/ч)</label>
+                            <input formControlName="speed" class="form-control speed" type="text" #speed
+                                [(ngModel)]="res.speed" [value]="res.speed">
+                        </div>
+                        <div *ngFor="let validation of account_validation_messages.speed">
+                            <div class="alert alert-danger" *ngIf="addTransportForm.get('speed').hasError(validation.type) &&
+                                       (addTransportForm.get('speed').dirty ||
+                                       addTransportForm.get('speed').touched)">
+                                {{validation.message}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="control-label" for="max_weight">Max вместимость (кг)</label>
+                            <input formControlName="max_weight" class="form-control max_weight" type="text" #max_weight
+                                [(ngModel)]="res.max_weight" [value]="res.max_weight">
+                        </div>
+                        <div *ngFor="let validation of account_validation_messages.max_weight">
+                            <div class="alert alert-danger" *ngIf="addTransportForm.get('max_weight').hasError(validation.type) &&
+                                           (addTransportForm.get('max_weight').dirty ||
+                                           addTransportForm.get('max_weight').touched)">
+                                {{validation.message}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="control-label" for="tariff_plan">Тариф (руб/км)</label>
+                            <input formControlName="tariff_plan" class="form-control tariff_plan" type="text"
+                                #tariff_plan [(ngModel)]="res.tariff_plan" [value]="res.tariff_plan">
+                        </div>
+                        <div *ngFor="let validation of account_validation_messages.tariff_plan">
+                            <div class="alert alert-danger" *ngIf="addTransportForm.get('tariff_plan').hasError(validation.type) &&
+                                           (addTransportForm.get('tariff_plan').dirty ||
+                                           addTransportForm.get('tariff_plan').touched)">
+                                {{validation.message}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Отменить</button>
+            <button type="button" class="btn btn-primary"
+                (click)="save(name_transport.value, speed.value, id_company, max_weight.value, tariff_plan.value)">Сохранить</button>
+        </div>
+    </ng-template>
 </div>

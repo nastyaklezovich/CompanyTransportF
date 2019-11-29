@@ -15,7 +15,7 @@ export class ViewMapsComponent implements OnInit {
 
   res: {} = {};
   map: {} = {};
-  mas: [] =[];
+  mas: [] = [];
 
   modalRef: BsModalRef;
 
@@ -26,6 +26,14 @@ export class ViewMapsComponent implements OnInit {
       console.log(data);
       this.maps = data;
     });
+  }
+
+  delete_map(id) {
+    console.log(id);
+    this.ms.delete_map(id).subscribe(res => {
+      console.log(id);
+      console.log('Deleted');
+    })
   }
 
   openModal(template: TemplateRef<any>, id) {
