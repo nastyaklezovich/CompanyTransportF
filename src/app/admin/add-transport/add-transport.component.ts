@@ -50,7 +50,7 @@ export class AddTransportComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.cs.get_compamies().subscribe((data: Company[]) => {
+    this.cs.get_companies().subscribe((data: Company[]) => {
       console.log(data);
       this.companies = data;
     });

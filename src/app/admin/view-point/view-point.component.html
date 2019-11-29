@@ -1,25 +1,52 @@
 <div class="container">
-        <h1 class="text-center"></h1>
-        <table class="table table-hover">
-            <thead class="thead-light">
-                <tr>
-                    <th>#</th>
-                    <th>Название остановки</th>
-                    <th>Изменить</th>
-                    <th>Удалить</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let point of points; let i=index">
-                    <td>{{i+1}}</td>
-                    <td>{{ point.name_point}}</td>
-
-                    <!-- <td><a [routerLink]="[{ outlets: { 'popup': ['./editcompany', company.id] }}]" skipLocationChange>Редактировать</a></td> -->
-                    <!-- <td><a [routerLink]="['./editcompany', company.id]" class="btn"><span
-                        class="fa fa-edit fa-2x"></span></a></td>
-                    <td><a (click)="delete_company(company.id)" class="btn"><span
-                                class="fa fa-trash-o fa-2x"></span></a></td> -->
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <h1 class="text-center"></h1>
+    <table class="table table-hover">
+        <thead class="thead-light">
+            <tr>
+                <th>#</th>
+                <th>Название остановки</th>
+                <th>Изменить</th>
+                <th>Удалить</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let point of points; let i=index">
+                <td>{{i+1}}</td>
+                <td>{{ point.name_point}}</td>
+                <td><a (click)="open_modal(template, point.id)" class="btn"><span class="fa fa-edit fa-2x"></span></a>
+                </td>
+                <td><a (click)="delete_point(point.id)" class="btn"><span class="fa fa-trash-o fa-2x"></span></a></td>
+            </tr>
+        </tbody>
+    </table>
+    <ng-template #template>
+        <div class="modal-header">
+            <h5>Редактирование</h5>
+            <button type="button" class="close" (click)="modalRef.hide()" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="addPointForm" role="form" class="form-group" novalidate>
+                <div class="justify-content-center align-items-center">
+                    <div class="form-group">
+                        <label class="control-label" for="name_point">Название:</label>
+                        <input formControlName="name_point" class="form-control name_point" type="text"
+                            [(ngModel)]="res.name_point" [value]="res.name_point" #name_point>
+                    </div>
+                    <div *ngFor="let validation of account_validation_messages.name_point">
+                        <div class="alert alert-danger" *ngIf="addPointForm.get('name_point').hasError(validation.type) &&
+                                                           (addPointForm.get('name_point').dirty ||
+                                                           addPointForm.get('name_point').touched)">
+                            {{validation.message}}
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Отменить</button>
+            <button type="button" class="btn btn-primary" (click)="save(name_point.value)">Сохранить</button>
+        </div>
+    </ng-template>
+</div>

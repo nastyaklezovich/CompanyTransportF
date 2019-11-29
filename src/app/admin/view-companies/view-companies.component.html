@@ -19,13 +19,86 @@
                 <td>{{ company.phone_number_company}}</td>
                 <td>{{ company.email_company}}</td>
                 <td>{{ company.description_company}}</td>
-                <!-- <td><a [routerLink]="[{ outlets: { 'popup': ['./editcompany', company.id] }}]" skipLocationChange>Редактировать</a></td> -->
-                <td><a [routerLink]="['./editcompany', company.id]" class="btn"><span
-                    class="fa fa-edit fa-2x"></span></a></td>
-                <td><a (click)="delete_company(company.id)" class="btn"><span
-                            class="fa fa-trash-o fa-2x"></span></a></td>
+                <td><a (click)="open_modal(template, company.id)" class="btn"><span class="fa fa-edit fa-2x"></span></a>
+                </td>
+                <td><a (click)="delete_company(company.id)" class="btn"><span class="fa fa-trash-o fa-2x"></span></a>
+                </td>
             </tr>
         </tbody>
     </table>
+
+    <ng-template #template>
+        <div class="modal-header">
+            <h5>Редактирование</h5>
+            <button type="button" class="close" (click)="modalRef.hide()" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="modal-body">
+
+            <form [formGroup]="addCompanyForm" role="form" class="form-group" novalidate>
+
+                <div class="form-group">
+                    <label class="control-label" for="name_company">Название</label>
+                    <input formControlName="name_company" class="form-control name_company" type="text"
+                        [(ngModel)]="res.name_company" [value]="res.name_company" #name_company>
+                </div>
+                <div *ngFor="let validation of account_validation_messages.name_company">
+                    <div class="alert alert-danger" *ngIf="addCompanyForm.get('name_company').hasError(validation.type) &&
+                                       (addCompanyForm.get('name_company').dirty ||
+                                       addCompanyForm.get('name_company').touched)">
+                        {{validation.message}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="phone_number_company">Номер телефона</label>
+                    <input formControlName="phone_number_company" class="form-control phone_number_company" type="text"
+                        [(ngModel)]="res.phone_number_company" [value]="res.phone_number_company" #phone_number_company>
+                </div>
+                <div *ngFor="let validation of account_validation_messages.phone_number_company">
+                    <div class="alert alert-danger" *ngIf="addCompanyForm.get('phone_number_company').hasError(validation.type) &&
+                                           (addCompanyForm.get('phone_number_company').dirty ||
+                                           addCompanyForm.get('name_company').touched)">
+                        {{validation.message}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="email_company">Email</label>
+                    <input formControlName="email_company" class="form-control email_company" type="email"
+                        [(ngModel)]="res.email_company" [value]="res.email_company" #email_company>
+                </div>
+                <div *ngFor="let validation of account_validation_messages.email_company">
+                    <div class="alert alert-danger" *ngIf="addCompanyForm.get('email_company').hasError(validation.type) &&
+                                               (addCompanyForm.get('email_company').dirty ||
+                                               addCompanyForm.get('email_company').touched)">
+                        {{validation.message}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="description_company">Описание компании</label>
+                    <textarea formControlName="description_company" class="form-control description_company"
+                        type="email" #description_company [(ngModel)]="res.description_company"
+                        [value]="res.description_company"></textarea>
+                </div>
+                <div *ngIf="addCompanyForm.controls['description_company'].invalid && (addCompanyForm.controls['description_company'].dirty || addCompanyForm.controls['description_company'].touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="addCompanyForm.controls['description_company'].errors.required">
+                        Заполните данное поле!
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Отменить</button>
+            <button type="button" class="btn btn-primary" (click)="save(name_company.value, phone_number_company.value, email_company.value, description_company.value)">Сохранить</button>
+        </div>
+    </ng-template>
+
 </div>
-<router-outlet name="popup"></router-outlet>

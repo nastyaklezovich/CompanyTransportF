@@ -15,7 +15,7 @@ export class CompanyService {
 
     this.http.post(`${this.uri}/company`, obj)
       .subscribe(res => { console.log('Done'); alert('Компания была добавлена!') },
-      error=>{alert('Ошибка добавления компании!')});
+        error => { alert('Ошибка добавления компании!') });
   }
 
 
@@ -25,7 +25,7 @@ export class CompanyService {
       .delete(`${this.uri}/company/${id}`);
   }
 
-  get_compamies() {
+  get_companies() {
     return this
       .http
       .get(`${this.uri}/company`);
@@ -35,16 +35,7 @@ export class CompanyService {
     return this.http.get(`${this.uri}/company/${id}`);
   }
 
-  update_company(name_company, phone_number_company, email_company, type_transportation_company, description_company, id) {
-
-    const obj =  {
-      name_company: name_company,
-      phone_number_company: phone_number_company, 
-      email_company: email_company, 
-      type_transportation_company: type_transportation_company, 
-      description_company: description_company
-    };
-    
+  update_company(obj, id) {
     this
       .http
       .put(`${this.uri}/company/${id}`, obj)

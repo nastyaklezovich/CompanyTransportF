@@ -77,7 +77,6 @@ export class ViewTransportsComponent implements OnInit {
     };
     this.route.params.subscribe(params => {
       this.ts.update_transport(obj, params['id']);
-      // this.router.navigate(['table']);
       this.modalRef.hide();
     });
 
