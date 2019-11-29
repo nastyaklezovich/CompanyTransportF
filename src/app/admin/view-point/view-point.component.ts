@@ -19,7 +19,6 @@ export class ViewPointComponent implements OnInit {
   modalRef: BsModalRef;
   addPointForm: FormGroup;
 
-
   constructor(private route: ActivatedRoute, private fb: FormBuilder, private modalService: BsModalService, private ps: PointService) {
     this.createForm();
   }

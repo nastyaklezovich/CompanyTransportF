@@ -36,4 +36,17 @@ export class UserService {
             .delete(`${this.uri}/user/${id}`);
     }
 
+    edit_user(id) {
+        return this.http.get(`${this.uri}/user/${id}`);
+    }
+
+    update_user(obj, id) {
+        this
+            .http
+            .put(`${this.uri}/user/${id}`, obj)
+            .subscribe(
+                res => console.log('Done'),
+                error => alert("Невозможно обновить данные о компании"));
+    }
+
 }
