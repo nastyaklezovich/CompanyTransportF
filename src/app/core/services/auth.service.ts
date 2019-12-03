@@ -46,6 +46,6 @@ export class AuthService extends BaseService {
   }
 
   public hasPermission(requiredRole: RoleType){
-    return this.currentUserVal.roles === requiredRole;
+    return this.currentUserVal.role === requiredRole;
   }
 }

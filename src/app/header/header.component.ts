@@ -29,11 +29,11 @@ export class HeaderComponent implements OnInit {
   }
 
   public get isAdmin(): boolean{
-    return this.currentUser.roles == "ADMIN";
+    return this.currentUser.role == "ADMIN";
   }
 
   public get isUser(): boolean{
-    return this.currentUser.roles == "USER"
+    return this.currentUser.role == "USER"
   }
 
 }

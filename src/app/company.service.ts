@@ -15,7 +15,8 @@ export class CompanyService {
 
     this.http.post(`${this.uri}/company`, obj)
       .subscribe(res => { console.log('Done'); alert('Компания была добавлена!') },
-        error => { alert('Ошибка добавления компании!') });
+        // error => { alert('Ошибка добавления компании!') });
+      );
   }
 
 

@@ -10,7 +10,7 @@ import { UserService } from 'src/app/user.service';
 })
 export class AddUserComponent implements OnInit {
 
-  roles = [{ name: "USER" }, { name: "ADMIN" }];
+  roles = [{ name: "USER" }, { name: "ADMIN" }, {name: "CARRIER"}];
 
   addUserForm: FormGroup;
 

@@ -20,7 +20,8 @@ export class PointService {
   add_point(obj) {
     this.http.post(`${this.uri}/point`, obj)
       .subscribe(res => { console.log('Done'); alert('Точка была добавлена!') },
-        error => { alert('Ошибка добавления точки!') });
+        // error => { alert('Ошибка добавления точки!') });
+      )
   }
 
   delete_point(id) {
