@@ -65,6 +65,7 @@ export class AddTransportComponent implements OnInit {
       max_weight: max_weight,
       tariff_plan: tariff_plan
     };
+    
     console.log(obj);
 
     this.ts.add_transport(obj)

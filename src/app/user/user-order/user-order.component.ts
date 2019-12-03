@@ -16,6 +16,7 @@ export class UserOrderComponent implements OnInit {
   ngOnInit() {
     var aValue = JSON.parse(localStorage.getItem('user'));
     var id = aValue.idUser;
+    console.log(id)
     this.uos.getUserOrders(id).subscribe((data: User_order[]) => {
       console.log(data);
       this.user_orders = data;

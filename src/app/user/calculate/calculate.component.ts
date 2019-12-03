@@ -49,6 +49,8 @@ export class CalculateComponent implements OnInit {
     var aValue = JSON.parse(localStorage.getItem('user'));
 
     var id = aValue.idUser;
+
+    console.log(id);
   
     const obj = {
       start_point: start_point,

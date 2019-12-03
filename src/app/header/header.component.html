@@ -82,28 +82,27 @@
           </li>
         </ng-template>
 
-        <ng-container #User *ngIf="isUser ; then user; else carrier">
+        <ng-template #User>
 
-        </ng-container>
+          <ng-container #User *ngIf="isUser ; then user; else carrier">
 
-        <ng-template #user>
-          <li class="nav-item active">
-            <a class="nav-link" routerLink="/user">Профиль</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" routerLink="user/calculate">Калькулятор</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" routerLink="user/orders">Заказы</a>
-          </li>
-        </ng-template>
+          </ng-container>
 
-        <ng-template #carrier>
-          <li class="nav-item active">
-            <a class="nav-link" routerLink="carrier/acceptproducts">Заказы</a>
-          </li>
+          <ng-template #user>
+            <li class="nav-item active">
+              <a class="nav-link" routerLink="user/calculate">Заказать</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" routerLink="user/orders">Заказы</a>
+            </li>
+          </ng-template>
 
-    
+          <ng-template #carrier>
+            <li class="nav-item active">
+              <a class="nav-link" routerLink="carrier/acceptproducts">Заказы</a>
+            </li>
+          </ng-template>
+
         </ng-template>
 
         <li class="nav-item">
