@@ -52,7 +52,9 @@ export class MapProductsComponent implements OnInit {
   }
 
   save_optimal_product() {
-
+    this.route.params.subscribe(params => {
+      this.ps.save_optimal_product(params['id']);
+    });
   }
 
 }
