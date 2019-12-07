@@ -4,6 +4,7 @@
         <thead class="thead-light">
             <tr>
                 <th>Номер заказа</th>
+                <th>Название</th>
                 <th>Дата отправки</th>
                 <th>Дата прибытия</th>
                 <th>Статус заказа</th>
@@ -14,6 +15,7 @@
         <tbody>
             <tr *ngFor="let user_order of user_orders; let i=index">
                 <td>{{i+1}}</td>
+                <td>{{ user_order.name}}</td>
                 <td>{{ user_order.start_date }}</td>
                 <td>{{ user_order.end_date }}</td>
                 <td>{{ user_order.status }}</td>
