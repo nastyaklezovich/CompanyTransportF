@@ -70,12 +70,8 @@
                     <div class="col">
                         <div class="form-group">
                             <label class="control-label" for="role">Роль</label>
-                            <select class="form-control" name="role" id="role" [(ngModel)]="role"
-                                [ngModelOptions]="{standalone: true}">
-                                <option *ngFor="let role of roles" [value]="role.name">
-                                    {{role.name}}
-                                </option>
-                            </select>
+                            <input formControlName="role" class="form-control role"
+                                [(ngModel)]="res.role" [value]="res.role" type="text" #role>
                         </div>
                         <div *ngIf="addUserForm.controls['role'].invalid && (addUserForm.controls['role'].dirty || addUserForm.controls['role'].touched)"
                             class="alert alert-danger">

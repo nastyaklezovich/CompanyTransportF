@@ -42,7 +42,7 @@ export class ViewUsersComponent implements OnInit {
         Validators.required
       ])],
       password: ['', [Validators.required]],
-      role: ["", Validators.required],
+      role: [{value: '', disabled: true}, Validators.required],
       phone_number: ['', Validators.compose([
         Validators.pattern('375[0-9]{2}-[0-9]{3}-[0-9]{2}-[0-9]{2}'),
         Validators.required
