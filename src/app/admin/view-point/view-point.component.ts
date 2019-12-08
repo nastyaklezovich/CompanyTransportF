@@ -50,12 +50,12 @@ export class ViewPointComponent implements OnInit {
     })
   }
 
-  save(name_point) {
+  save(name_point, id) {
     const obj = {
       name_point: name_point,
     }
     this.route.params.subscribe(params => {
-      this.ps.update_point(obj, params['id']);
+      this.ps.update_point(obj, id);
       this.modalRef.hide();
     });
   }

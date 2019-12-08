@@ -71,16 +71,16 @@ export class ViewCompaniesComponent implements OnInit {
     }));
   }
 
-  save(name_company, phone_number_company, email_company, description_company) {
+  save(name_company, phone_number_company, email_company, description_company, id) {
     const obj = {
       name_company: name_company,
       phone_number_company: phone_number_company,
       email_company: email_company,
       description_company: description_company,
     };
-
+    console.log(id);
     this.route.params.subscribe(params => {
-      this.cs.update_company(obj, params['id']);
+      this.cs.update_company(obj, id);
       this.modalRef.hide();
     });
   }

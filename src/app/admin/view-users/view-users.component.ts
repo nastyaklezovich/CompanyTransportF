@@ -64,7 +64,7 @@ export class ViewUsersComponent implements OnInit {
     });
   }
 
-  save(first_name, last_name, email, password, role, phone_number) {
+  save(first_name, last_name, email, password, role, phone_number, id) {
     const user = {
       first_name: first_name,
       last_name: last_name,
@@ -73,8 +73,10 @@ export class ViewUsersComponent implements OnInit {
       role: role,
       phone_number: phone_number,
     }
+    console.log(user);
+    console.log(id);
     this.route.params.subscribe(params => {
-      this.us.update_user(user, params['id']);
+      this.us.update_user(user, id);
       this.modalRef.hide();
     });
   }

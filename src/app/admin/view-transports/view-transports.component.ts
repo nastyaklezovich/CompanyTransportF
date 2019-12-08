@@ -67,7 +67,7 @@ export class ViewTransportsComponent implements OnInit {
     });
   }
 
-  save(name_transport, speed, id_company, max_weight, tariff_plan) {
+  save(name_transport, speed, id_company, max_weight, tariff_plan, id) {
     const obj = {
       name_transport: name_transport,
       speed: speed,
@@ -76,7 +76,7 @@ export class ViewTransportsComponent implements OnInit {
       tariff_plan: tariff_plan
     };
     this.route.params.subscribe(params => {
-      this.ts.update_transport(obj, params['id']);
+      this.ts.update_transport(obj, id);
       this.modalRef.hide();
     });
 
