@@ -37,7 +37,7 @@ export class ViewTransportsComponent implements OnInit {
           Validators.pattern(/^[0-9]/),
           Validators.required
         ])],
-        id_company: ['', Validators.required],
+        id_company: [{ value: '', disabled: true }, Validators.required],
         max_weight: ['', Validators.compose([
           Validators.maxLength(4),
           Validators.pattern(/^[0-9]/),
@@ -64,8 +64,9 @@ export class ViewTransportsComponent implements OnInit {
   delete_transport(id) {
     this.ts.delete_transport(id).subscribe(res => {
       console.log(id);
-      console.log('Deleted');},
-      error => {this.error = error.message; console.log(error);alert('Невозможно удалить!')}
+      console.log('Deleted');
+    },
+      error => { this.error = error.message; console.log(error); alert('Невозможно удалить!') }
     );
   }
 

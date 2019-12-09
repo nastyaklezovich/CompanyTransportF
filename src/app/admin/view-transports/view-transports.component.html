@@ -59,12 +59,15 @@
                     <div class="col">
                         <div class="form-group">
                             <label class="control-label" for="id_company">Компания</label>
-                            <select class="form-control" name="id_company" id="id_company" [(ngModel)]="id_company"
+                            <input formControlName="id_company" class="form-control id_company" type="text"
+                            [(ngModel)]="res.id_company" [value]="res.id_company" #id_company>
+                    
+                            <!-- <select class="form-control" name="id_company" id="id_company" [(ngModel)]="id_company"
                                 [ngModelOptions]="{standalone: true}">
                                 <option *ngFor="let company of companies" [value]="company.id">
                                     {{company.name_company}}
                                 </option>
-                            </select>
+                            </select> -->
                         </div>
                         <div *ngIf="addTransportForm.controls['id_company'].invalid && (addTransportForm.controls['id_company'].dirty || addTransportForm.controls['id_company'].touched)"
                             class="alert alert-danger">
