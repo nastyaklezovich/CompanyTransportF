@@ -5,25 +5,25 @@
     <label for="inputEmail" class="sr-only">Email:</label>
     <input formControlName="login" #login type="email" id="inputEmail" class="form-control" placeholder="Email address"
         required="" autofocus="">
-    <div *ngFor="let validation of account_validation_messages.login">
+    <!-- <div *ngFor="let validation of account_validation_messages.login">
         <div class="alert alert-danger" *ngIf="authForm.get('login').hasError(validation.type) &&
                            (authForm.get('login').dirty ||
                            authForm.get('login').touched)">
             {{validation.message}}
         </div>
-    </div>
+    </div> -->
 
 
     <label for="inputPassword" class="sr-only">Пароль:</label>
     <input formControlName="password" type="password" id="inputPassword" class="form-control" placeholder="Password"
         required="">
-    <div *ngFor="let validation of account_validation_messages.password">
+    <!-- <div *ngFor="let validation of account_validation_messages.password">
         <div class="alert alert-danger" *ngIf="authForm.get('password').hasError(validation.type) &&
                                    (authForm.get('password').dirty ||
                                    authForm.get('password').touched)">
             {{validation.message}}
         </div>
-    </div>
+    </div> -->
 
     <div class="form-group justify-content-center align-items-center text-center">
         <button routerLink="/" class="btn btn-danger" style="margin: 3px; width: 100px;">Отменить</button>
