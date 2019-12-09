@@ -54,11 +54,13 @@ export class ViewCompaniesComponent implements OnInit {
     )
   }
 
+  error: any;
   delete_company(id) {
     this.cs.delete_company(id).subscribe(res => {
       console.log(id);
-      console.log('Deleted');
-    });
+      console.log('Deleted');},
+      error => {this.error = error.message; console.log(error);alert('Невозможно удалить!')}
+    );
   }
 
   open_modal(template: TemplateRef<any>, id) {

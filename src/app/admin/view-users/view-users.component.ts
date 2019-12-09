@@ -57,11 +57,14 @@ export class ViewUsersComponent implements OnInit {
     })
   }
 
+  error:any;
+
   delete_user(id) {
     this.us.delete_user(id).subscribe(res => {
       console.log(id);
-      console.log('Deleted');
-    });
+      console.log('Deleted');},
+      error => {this.error = error.message; console.log(error);alert('Невозможно удалить!')}
+    );
   }
 
   save(first_name, last_name, email, password, role, phone_number, id) {

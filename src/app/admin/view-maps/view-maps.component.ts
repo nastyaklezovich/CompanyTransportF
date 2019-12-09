@@ -28,12 +28,14 @@ export class ViewMapsComponent implements OnInit {
     });
   }
 
+  error:any;
   delete_map(id) {
     console.log(id);
     this.ms.delete_map(id).subscribe(res => {
       console.log(id);
-      console.log('Deleted');
-    })
+      console.log('Deleted');},
+      error => {this.error = error.message; console.log(error);alert('Невозможно удалить!')}
+    );
   }
 
   openModal(template: TemplateRef<any>, id) {

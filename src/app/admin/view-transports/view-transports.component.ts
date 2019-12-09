@@ -60,11 +60,13 @@ export class ViewTransportsComponent implements OnInit {
     })
   }
 
+  error: any;
   delete_transport(id) {
     this.ts.delete_transport(id).subscribe(res => {
       console.log(id);
-      console.log('Deleted');
-    });
+      console.log('Deleted');},
+      error => {this.error = error.message; console.log(error);alert('Невозможно удалить!')}
+    );
   }
 
   save(name_transport, speed, id_company, max_weight, tariff_plan, id) {

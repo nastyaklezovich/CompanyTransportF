@@ -43,11 +43,13 @@ export class ViewPointComponent implements OnInit {
     })
   }
 
+  error:any;
   delete_point(id) {
     this.ps.delete_point(id).subscribe(res => {
       console.log(id);
-      console.log('Deleted');
-    })
+      console.log('Deleted');},
+      error => {this.error = error.message; console.log(error);alert('Невозможно удалить!')}
+    );
   }
 
   save(name_point, id) {
